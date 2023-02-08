@@ -1,0 +1,17 @@
+{
+  "trigger": true,
+  "modules": [
+    "custom"
+  ],
+  "parentResource": "atsusnaic25acefcc25acefc",
+  "functionName": "atsusnaic25acefcc25acefcPostConfirmation",
+  "resourceName": "atsusnaic25acefcc25acefcPostConfirmation",
+  "parentStack": "auth",
+  "triggerEnvs": [],
+  "triggerDir": "/snapshot/repo/build/node_modules/@aws-amplify/amplify-category-auth/provider-utils/awscloudformation/triggers/PostConfirmation",
+  "triggerTemplate": "PostConfirmation.json.ejs",
+  "triggerEventPath": "PostConfirmation.event.json",
+  "roleName": "atsusnaic25acefcc25acefcPostConfirmation",
+  "skipEdit": true,
+  "enableCors": false
+}

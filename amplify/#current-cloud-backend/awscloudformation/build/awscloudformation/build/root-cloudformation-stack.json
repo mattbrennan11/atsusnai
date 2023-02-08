@@ -152,15 +152,100 @@
         }
       }
     },
-    "authatsusnai03f42d04": {
+    "APIGatewayAuthStack": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/auth/atsusnai03f42d04-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json",
         "Parameters": {
-          "identityPoolName": "atsusnai03f42d04_identitypool_03f42d04",
+          "authRoleName": {
+            "Ref": "AuthRoleName"
+          },
+          "unauthRoleName": {
+            "Ref": "UnauthRoleName"
+          },
+          "env": "staging",
+          "userInfo": {
+            "Fn::GetAtt": [
+              "apiuserInfo",
+              "Outputs.ApiId"
+            ]
+          }
+        }
+      }
+    },
+    "AuthTriggerCustomLambdaStack": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json",
+        "Parameters": {
+          "env": "staging",
+          "userpoolId": {
+            "Fn::GetAtt": [
+              "authatsusnaic25acefcc25acefc",
+              "Outputs.UserPoolId"
+            ]
+          },
+          "userpoolArn": {
+            "Fn::GetAtt": [
+              "authatsusnaic25acefcc25acefc",
+              "Outputs.UserPoolArn"
+            ]
+          },
+          "functionatsusnaic25acefcc25acefcPostConfirmationLambdaExecutionRole": {
+            "Fn::GetAtt": [
+              "functionatsusnaic25acefcc25acefcPostConfirmation",
+              "Outputs.LambdaExecutionRoleArn"
+            ]
+          },
+          "functionatsusnaic25acefcc25acefcPostConfirmationArn": {
+            "Fn::GetAtt": [
+              "functionatsusnaic25acefcc25acefcPostConfirmation",
+              "Outputs.Arn"
+            ]
+          },
+          "functionatsusnaic25acefcc25acefcPostConfirmationName": {
+            "Fn::GetAtt": [
+              "functionatsusnaic25acefcc25acefcPostConfirmation",
+              "Outputs.Name"
+            ]
+          }
+        }
+      },
+      "DependsOn": [
+        "authatsusnaic25acefcc25acefc",
+        "functionatsusnaic25acefcc25acefcPostConfirmation"
+      ]
+    },
+    "apiuserInfo": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/api/userInfo-cloudformation-template.json",
+        "Parameters": {
+          "functionuserInfoLamdbaName": {
+            "Fn::GetAtt": [
+              "functionuserInfoLamdba",
+              "Outputs.Name"
+            ]
+          },
+          "functionuserInfoLamdbaArn": {
+            "Fn::GetAtt": [
+              "functionuserInfoLamdba",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "authatsusnaic25acefcc25acefc": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/auth/atsusnaic25acefcc25acefc-cloudformation-template.json",
+        "Parameters": {
+          "identityPoolName": "atsusnaic25acefc_identitypool_c25acefc",
           "allowUnauthenticatedIdentities": false,
-          "resourceNameTruncated": "atsusn03f42d04",
-          "userPoolName": "atsusnai03f42d04_userpool_03f42d04",
+          "resourceNameTruncated": "atsusnc25acefc",
+          "userPoolName": "atsusnaic25acefc_userpool_c25acefc",
           "autoVerifiedAttributes": "email",
           "mfaConfiguration": "OFF",
           "mfaTypes": "SMS Text Message",
@@ -177,13 +262,18 @@
           "userpoolClientRefreshTokenValidity": 30,
           "userpoolClientWriteAttributes": "email",
           "userpoolClientReadAttributes": "email",
-          "userpoolClientLambdaRole": "atsusn03f42d04_userpoolclient_lambda_role",
+          "userpoolClientLambdaRole": "atsusnc25acefc_userpoolclient_lambda_role",
           "userpoolClientSetAttributes": false,
-          "sharedId": "03f42d04",
-          "resourceName": "atsusnai03f42d04",
+          "sharedId": "c25acefc",
+          "resourceName": "atsusnaic25acefcc25acefc",
           "authSelections": "identityPoolAndUserPool",
-          "useDefault": "default",
-          "userPoolGroupList": "",
+          "useDefault": "manual",
+          "thirdPartyAuth": false,
+          "userPoolGroups": true,
+          "adminQueries": false,
+          "triggers": "{\"PostConfirmation\":[\"custom\"]}",
+          "hostedUI": false,
+          "userPoolGroupList": "Admin",
           "serviceName": "Cognito",
           "usernameCaseSensitive": false,
           "useEnabledMfas": true,
@@ -200,7 +290,115 @@
             ]
           },
           "breakCircularDependency": true,
-          "dependsOn": "",
+          "dependsOn": "[object Object]",
+          "permissions": "",
+          "authTriggerConnections": "{\"triggerType\":\"PostConfirmation\",\"lambdaFunctionName\":\"atsusnaic25acefcc25acefcPostConfirmation\"}",
+          "env": "staging"
+        }
+      }
+    },
+    "authuserPoolGroups": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/auth/userPoolGroups-cloudformation-template.json",
+        "Parameters": {
+          "AuthRoleArn": {
+            "Fn::GetAtt": [
+              "AuthRole",
+              "Arn"
+            ]
+          },
+          "UnauthRoleArn": {
+            "Fn::GetAtt": [
+              "UnauthRole",
+              "Arn"
+            ]
+          },
+          "authatsusnaic25acefcc25acefcUserPoolId": {
+            "Fn::GetAtt": [
+              "authatsusnaic25acefcc25acefc",
+              "Outputs.UserPoolId"
+            ]
+          },
+          "authatsusnaic25acefcc25acefcAppClientIDWeb": {
+            "Fn::GetAtt": [
+              "authatsusnaic25acefcc25acefc",
+              "Outputs.AppClientIDWeb"
+            ]
+          },
+          "authatsusnaic25acefcc25acefcAppClientID": {
+            "Fn::GetAtt": [
+              "authatsusnaic25acefcc25acefc",
+              "Outputs.AppClientID"
+            ]
+          },
+          "authatsusnaic25acefcc25acefcIdentityPoolId": {
+            "Fn::GetAtt": [
+              "authatsusnaic25acefcc25acefc",
+              "Outputs.IdentityPoolId"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "functionatsusnaiadc2af0aadc2af0aPostConfirmation": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/atsusnaiadc2af0aadc2af0aPostConfirmation-cloudformation-template.json",
+        "Parameters": {
+          "modules": "custom",
+          "resourceName": "atsusnaiadc2af0aadc2af0aPostConfirmation",
+          "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
+          "s3Key": "amplify-builds/atsusnaiadc2af0aadc2af0aPostConfirmation-392f3475506841467063-build.zip",
+          "env": "staging"
+        }
+      }
+    },
+    "functionatsusnaic25acefcc25acefcPostConfirmation": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/atsusnaic25acefcc25acefcPostConfirmation-cloudformation-template.json",
+        "Parameters": {
+          "modules": "custom",
+          "resourceName": "atsusnaic25acefcc25acefcPostConfirmation",
+          "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
+          "s3Key": "amplify-builds/atsusnaic25acefcc25acefcPostConfirmation-544e4970584435492f58-build.zip",
+          "env": "staging"
+        }
+      }
+    },
+    "functionuserInfoLamdba": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/userInfoLamdba-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
+          "s3Key": "amplify-builds/userInfoLamdba-354c6c7872587745617a-build.zip",
+          "storageuserInfoDBName": {
+            "Fn::GetAtt": [
+              "storageuserInfoDB",
+              "Outputs.Name"
+            ]
+          },
+          "storageuserInfoDBArn": {
+            "Fn::GetAtt": [
+              "storageuserInfoDB",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "storageuserInfoDB": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/storage/userInfoDB-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "user",
+          "partitionKeyName": "email",
+          "partitionKeyType": "S",
           "env": "staging"
         }
       }
@@ -209,7 +407,7 @@
       "DependsOn": [
         "AuthRole",
         "UnauthRole",
-        "authatsusnai03f42d04"
+        "authatsusnaic25acefcc25acefc"
       ],
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -304,7 +502,7 @@
         },
         "idpId": {
           "Fn::GetAtt": [
-            "authatsusnai03f42d04",
+            "authatsusnaic25acefcc25acefc",
             "Outputs.IdentityPoolId"
           ]
         },

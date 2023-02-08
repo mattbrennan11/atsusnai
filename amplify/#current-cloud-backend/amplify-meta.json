@@ -9,48 +9,214 @@
       "UnauthRoleName": "amplify-amplifya98d092bf2634-staging-182351-unauthRole",
       "StackName": "amplify-amplifya98d092bf2634-staging-182351",
       "StackId": "arn:aws:cloudformation:us-east-1:926877037256:stack/amplify-amplifya98d092bf2634-staging-182351/42269190-975d-11ed-97a0-0ebd0ce19bd1",
-      "AmplifyAppId": "d2r13c3rg5l6z"
+      "AmplifyAppId": "d2r13c3rg5l6z",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    }
+  },
+  "api": {
+    "userInfo": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "userInfoLamdba",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/api/userInfo-cloudformation-template.json",
+        "logicalId": "apiuserInfo"
+      },
+      "lastPushTimeStamp": "2023-02-07T16:15:17.321Z",
+      "output": {
+        "ApiName": "userInfo",
+        "RootUrl": "https://hpuaokfpwd.execute-api.us-east-1.amazonaws.com/staging",
+        "ApiId": "hpuaokfpwd"
+      },
+      "lastPushDirHash": "IHUKAC+HzdYPdVPLAYJVT9LfZ+4="
     }
   },
   "auth": {
-    "atsusnai03f42d04": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
+    "atsusnaic25acefcc25acefc": {
       "customAuth": false,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "atsusnaic25acefcc25acefcPostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
       "frontendAuthConfig": {
-        "socialProviders": [],
-        "usernameAttributes": [],
-        "signupAttributes": [
-          "EMAIL"
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": []
         },
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
+        "signupAttributes": [
+          "EMAIL"
         ],
+        "socialProviders": [],
+        "usernameAttributes": [],
         "verificationMechanisms": [
           "EMAIL"
         ]
       },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/auth/atsusnai03f42d04-cloudformation-template.json",
-        "logicalId": "authatsusnai03f42d04"
-      },
-      "lastPushTimeStamp": "2023-01-18T18:41:25.499Z",
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
       "output": {
-        "UserPoolId": "us-east-1_p4KO8d4AU",
-        "AppClientIDWeb": "79k2hi2eaubbv7he1rpcra5bp5",
-        "AppClientID": "4qgm02t32kp76ph14s5qm80t7b",
-        "IdentityPoolId": "us-east-1:974be8e6-d114-4505-8b66-489049c77094",
-        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:926877037256:userpool/us-east-1_p4KO8d4AU",
-        "IdentityPoolName": "atsusnai03f42d04_identitypool_03f42d04__staging",
-        "UserPoolName": "atsusnai03f42d04_userpool_03f42d04"
+        "UserPoolId": "us-east-1_eHnRSN3jK",
+        "AppClientIDWeb": "747qokjfqkbueg3r489gqtbkep",
+        "AppClientID": "3mhon7jkmo1vis08brdg1iueos",
+        "IdentityPoolId": "us-east-1:1b7a2397-da9c-4cb8-9622-578be703af78",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:926877037256:userpool/us-east-1_eHnRSN3jK",
+        "IdentityPoolName": "atsusnaic25acefc_identitypool_c25acefc__staging",
+        "UserPoolName": "atsusnaic25acefc_userpool_c25acefc"
       },
-      "lastPushDirHash": "v+MkKsV7SeOxFCSDbGE3Z2WOcHc="
+      "lastPushTimeStamp": "2023-02-07T16:15:16.219Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/auth/atsusnaic25acefcc25acefc-cloudformation-template.json",
+        "logicalId": "authatsusnaic25acefcc25acefc"
+      }
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "atsusnaic25acefcc25acefc",
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ]
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups",
+      "output": {
+        "AdminGroupRole": "arn:aws:iam::926877037256:role/us-east-1_eHnRSN3jK-AdminGroupRole"
+      },
+      "lastPushTimeStamp": "2023-02-07T16:15:16.224Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/auth/userPoolGroups-cloudformation-template.json",
+        "logicalId": "authuserPoolGroups"
+      }
+    }
+  },
+  "function": {
+    "atsusnaiadc2af0aadc2af0aPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::926877037256:role/atsusnaiadc2af0aadc2af0aPostConfirmation-staging",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:926877037256:function:atsusnaiadc2af0aadc2af0aPostConfirmation-staging",
+        "Name": "atsusnaiadc2af0aadc2af0aPostConfirmation-staging",
+        "LambdaExecutionRole": "atsusnaiadc2af0aadc2af0aPostConfirmation-staging"
+      },
+      "lastPushTimeStamp": "2023-02-07T16:15:16.227Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/atsusnaiadc2af0aadc2af0aPostConfirmation-cloudformation-template.json",
+        "logicalId": "functionatsusnaiadc2af0aadc2af0aPostConfirmation"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
+        "s3Key": "amplify-builds/atsusnaiadc2af0aadc2af0aPostConfirmation-392f3475506841467063-build.zip"
+      }
+    },
+    "atsusnaic25acefcc25acefcPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::926877037256:role/atsusnaic25acefcc25acefcPostConfirmation-staging",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:926877037256:function:atsusnaic25acefcc25acefcPostConfirmation-staging",
+        "Name": "atsusnaic25acefcc25acefcPostConfirmation-staging",
+        "LambdaExecutionRole": "atsusnaic25acefcc25acefcPostConfirmation-staging"
+      },
+      "lastPushTimeStamp": "2023-02-07T16:15:16.229Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/atsusnaic25acefcc25acefcPostConfirmation-cloudformation-template.json",
+        "logicalId": "functionatsusnaic25acefcc25acefcPostConfirmation"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
+        "s3Key": "amplify-builds/atsusnaic25acefcc25acefcPostConfirmation-544e4970584435492f58-build.zip"
+      }
+    },
+    "userInfoLamdba": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "userInfoDB",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ],
+      "lastBuildTimeStamp": "2023-02-07T16:10:26.216Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-02-07T16:10:27.687Z",
+      "distZipFilename": "userInfoLamdba-354c6c7872587745617a-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
+        "s3Key": "amplify-builds/userInfoLamdba-354c6c7872587745617a-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/userInfoLamdba-cloudformation-template.json",
+        "logicalId": "functionuserInfoLamdba"
+      },
+      "lastPushTimeStamp": "2023-02-07T16:15:17.321Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::926877037256:role/atsusnaiLambdaRole6b99a040-staging",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:926877037256:function:userInfoLamdba-staging",
+        "Name": "userInfoLamdba-staging",
+        "LambdaExecutionRole": "atsusnaiLambdaRole6b99a040-staging"
+      },
+      "lastPushDirHash": "SpsK+BppAoI+EU32IHvDDeVsZO0="
+    }
+  },
+  "storage": {
+    "userInfoDB": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/storage/userInfoDB-cloudformation-template.json",
+        "logicalId": "storageuserInfoDB"
+      },
+      "lastPushTimeStamp": "2023-02-07T16:15:17.321Z",
+      "output": {
+        "PartitionKeyName": "email",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:926877037256:table/user-staging",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:926877037256:table/user-staging/stream/2023-02-07T16:10:48.239",
+        "PartitionKeyType": "S",
+        "Name": "user-staging"
+      },
+      "lastPushDirHash": "zdL2S2GPgomEmeApL4TvD+DC8sE="
     }
   }
 }

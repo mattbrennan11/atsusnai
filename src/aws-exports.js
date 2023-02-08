@@ -3,10 +3,17 @@
 
 const awsmobile = {
     "aws_project_region": "us-east-1",
-    "aws_cognito_identity_pool_id": "us-east-1:974be8e6-d114-4505-8b66-489049c77094",
+    "aws_cloud_logic_custom": [
+        {
+            "name": "userInfo",
+            "endpoint": "https://hpuaokfpwd.execute-api.us-east-1.amazonaws.com/staging",
+            "region": "us-east-1"
+        }
+    ],
+    "aws_cognito_identity_pool_id": "us-east-1:1b7a2397-da9c-4cb8-9622-578be703af78",
     "aws_cognito_region": "us-east-1",
-    "aws_user_pools_id": "us-east-1_p4KO8d4AU",
-    "aws_user_pools_web_client_id": "79k2hi2eaubbv7he1rpcra5bp5",
+    "aws_user_pools_id": "us-east-1_eHnRSN3jK",
+    "aws_user_pools_web_client_id": "747qokjfqkbueg3r489gqtbkep",
     "oauth": {},
     "aws_cognito_username_attributes": [],
     "aws_cognito_social_providers": [],
@@ -23,6 +30,13 @@ const awsmobile = {
     },
     "aws_cognito_verification_mechanisms": [
         "EMAIL"
+    ],
+    "aws_dynamodb_all_tables_region": "us-east-1",
+    "aws_dynamodb_table_schemas": [
+        {
+            "tableName": "user-staging",
+            "region": "us-east-1"
+        }
     ]
 };
 

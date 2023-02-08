@@ -1,8 +1,44 @@
 {
+  "api": {
+    "atsusnai": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "atsusnaic25acefcc25acefc"
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authatsusnaic25acefcc25acefc"
+            }
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
   "auth": {
-    "atsusnai03f42d04": {
+    "atsusnaic25acefcc25acefc": {
       "customAuth": false,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "atsusnaic25acefcc25acefcPostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
         "mfaTypes": [
@@ -23,6 +59,109 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "atsusnaic25acefcc25acefc"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups"
+    }
+  },
+  "function": {
+    "atsusnaiadc2af0aadc2af0aPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "atsusnaic25acefcc25acefcPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "userInfoLamdba": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "userInfoDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_atsusnaiadc2af0aadc2af0aPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "atsusnaiadc2af0aadc2af0aPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_atsusnaiadc2af0aadc2af0aPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "atsusnaiadc2af0aadc2af0aPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_atsusnaic25acefcc25acefcPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "atsusnaic25acefcc25acefcPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_atsusnaic25acefcc25acefcPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "atsusnaic25acefcc25acefcPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_userInfoLamdba_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "userInfoLamdba"
+        }
+      ]
+    },
+    "AMPLIFY_function_userInfoLamdba_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "userInfoLamdba"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "userInfoDB": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
     }
   }
 }
