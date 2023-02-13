@@ -2,17 +2,17 @@ import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
 export const FooterContainer = styled.footer`
-
+    heigh: 80px;
     background-color: #101522;
 `
 
 export const FooterWrapper = styled.div`
-    padding: 40px 24px;
+    padding: -10px -14px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 1100px;
+    max-width: 800px;
     margin: 0 auto;
 `
 
@@ -53,7 +53,7 @@ export const FooterLinkItems = styled.div`
 
 export const FooterLinkTitle = styled.h1`
     font-size: 14px;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
 
 `
 

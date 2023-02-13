@@ -1,7 +1,8 @@
 import React from 'react';
-import {SidebarContainer, Icon, CloseIcon, SidebarWrapper, SidebarMenu, SidebarLink, SideBtnWrap, SidebarRoute} from './SidebarElements';
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import {NavBtnLink, SidebarContainer, Icon, CloseIcon, SidebarWrapper, SidebarMenu, SidebarLink, SideBtnWrap } from './SidebarElements';
 
-const Sidebar = ({ isOpen, toggle}) => {
+const Sidebar = ({ isOpen, toggle, signOut}) => {
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
         <Icon onClcik={toggle}>
@@ -9,27 +10,30 @@ const Sidebar = ({ isOpen, toggle}) => {
         </Icon>
         <SidebarWrapper>
             <SidebarMenu>
-                <SidebarLink to="about" onClick={toggle}>
-                    About
+                <SidebarLink to="quiz" onClick={toggle}>
+                    Quiz
                 </SidebarLink>
-                <SidebarLink to="discover" onClick={toggle}>
-                    Discover
+                <SidebarLink to="councillors" onClick={toggle}>
+                    Councillors
                 </SidebarLink>
-                <SidebarLink to="services" onClick={toggle}>
-                    Services
+                <SidebarLink to="parties" onClick={toggle}>
+                    Party
                 </SidebarLink>
-                <SidebarLink to="signup" onClick={toggle}>
-                    Sign Up
+                <SidebarLink to="profile" onClick={toggle}>
+                    Profile
                 </SidebarLink>
             </SidebarMenu>
             <SideBtnWrap>
-                <SidebarRoute to='/signin'>
-                    Sign In
-                </SidebarRoute>
+
+            <SidebarLink>
+            <NavBtnLink onClick={signOut}Sign Out>Sign Out</NavBtnLink>  
+                </SidebarLink>
+                
             </SideBtnWrap>
         </SidebarWrapper>
     </SidebarContainer>
   );
 };
 
-export default Sidebar;
+export default withAuthenticator(Sidebar);
+

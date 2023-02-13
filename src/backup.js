@@ -16,7 +16,6 @@ function App({ signOut }) {
       <Router>
       <Routes>
         <Route path="/" element={<Home/>} />
-        
       </Routes>
     </Router>
       <Button onClick={signOut}>Sign Out</Button>
@@ -25,3 +24,4 @@ function App({ signOut }) {
 }
 
 export default withAuthenticator(App);
+

@@ -88,4 +88,26 @@ export const SidebarRoute = styled(LinkRouter)`
         background: #fff;
         color: #010606;
     }
+`
+
+export const NavBtnLink = styled.nav`
+    border-radius: 20px;
+    background: #01bf71;
+    align-items: center;
+    white-space: nowrap;
+    padding: 10px 40px;
+    color: #010606;
+    font-size: 12px;
+    outline: none;
+    margin-left: 15px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+
+    &:hover{
+        transition: all 0.2s ease-in-out;
+        background: #fff;
+        color: #010606;
+}
 `;

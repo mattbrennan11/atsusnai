@@ -13,32 +13,7 @@
       "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     }
   },
-  "api": {
-    "atsusnai": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "atsusnaic25acefcc25acefc",
-          "attributes": [
-            "UserPoolId"
-          ]
-        }
-      ],
-      "output": {
-        "authConfig": {
-          "defaultAuthentication": {
-            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-            "userPoolConfig": {
-              "userPoolId": "authatsusnaic25acefcc25acefc"
-            }
-          },
-          "additionalAuthenticationProviders": []
-        }
-      }
-    }
-  },
+  "api": {},
   "auth": {
     "atsusnaic25acefcc25acefc": {
       "customAuth": false,
@@ -82,7 +57,7 @@
         "IdentityPoolName": "atsusnaic25acefc_identitypool_c25acefc__staging",
         "UserPoolName": "atsusnaic25acefc_userpool_c25acefc"
       },
-      "lastPushTimeStamp": "2023-02-08T09:55:40.911Z",
+      "lastPushTimeStamp": "2023-02-08T15:09:07.950Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/auth/atsusnaic25acefcc25acefc-cloudformation-template.json",
         "logicalId": "authatsusnaic25acefcc25acefc"
@@ -106,7 +81,7 @@
       "output": {
         "AdminGroupRole": "arn:aws:iam::926877037256:role/us-east-1_eHnRSN3jK-AdminGroupRole"
       },
-      "lastPushTimeStamp": "2023-02-08T09:55:42.681Z",
+      "lastPushTimeStamp": "2023-02-08T15:09:09.926Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/auth/userPoolGroups-cloudformation-template.json",
         "logicalId": "authuserPoolGroups"
@@ -125,7 +100,7 @@
         "Name": "atsusnaiadc2af0aadc2af0aPostConfirmation-staging",
         "LambdaExecutionRole": "atsusnaiadc2af0aadc2af0aPostConfirmation-staging"
       },
-      "lastPushTimeStamp": "2023-02-08T09:55:40.916Z",
+      "lastPushTimeStamp": "2023-02-08T15:09:07.954Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/atsusnaiadc2af0aadc2af0aPostConfirmation-cloudformation-template.json",
         "logicalId": "functionatsusnaiadc2af0aadc2af0aPostConfirmation"
@@ -146,7 +121,7 @@
         "Name": "atsusnaic25acefcc25acefcPostConfirmation-staging",
         "LambdaExecutionRole": "atsusnaic25acefcc25acefcPostConfirmation-staging"
       },
-      "lastPushTimeStamp": "2023-02-08T09:55:40.919Z",
+      "lastPushTimeStamp": "2023-02-08T15:09:07.959Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/atsusnaic25acefcc25acefcPostConfirmation-cloudformation-template.json",
         "logicalId": "functionatsusnaic25acefcc25acefcPostConfirmation"
@@ -186,7 +161,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/userInfoLamdba-cloudformation-template.json",
         "logicalId": "functionuserInfoLamdba"
       },
-      "lastPushTimeStamp": "2023-02-08T09:55:40.922Z",
+      "lastPushTimeStamp": "2023-02-08T15:09:07.961Z",
       "output": {
         "LambdaExecutionRoleArn": "arn:aws:iam::926877037256:role/atsusnaiLambdaRole6b99a040-staging",
         "Region": "us-east-1",
@@ -205,7 +180,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/storage/userInfoDB-cloudformation-template.json",
         "logicalId": "storageuserInfoDB"
       },
-      "lastPushTimeStamp": "2023-02-08T09:55:40.924Z",
+      "lastPushTimeStamp": "2023-02-08T15:09:07.964Z",
       "output": {
         "PartitionKeyName": "email",
         "Region": "us-east-1",

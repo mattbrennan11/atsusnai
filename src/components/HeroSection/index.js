@@ -19,10 +19,12 @@ const HeroSection = () => {
 
             </HeroBg>
             <HeroContent>
-                <HeroH1>NI Political Party</HeroH1>
+                <HeroH1>Ats Us Nai</HeroH1>
                 <HeroP>
-                    Take the NI Political Party Quiz to discover which political party in NI represents
-                    you best.
+                    A one-stop website where you can find your local councillors,
+                    compare political parties in Northern Ireland
+                    , and take a quiz to find out which Northern Ireland
+                    political party best represents your views.
                 </HeroP>
                 <HeroBtnWrapper>
                     <Button to="quiz" onMouseEnter={onHover} 
@@ -34,9 +36,44 @@ const HeroSection = () => {
                     spy={true}
                     exact='true'
                     offset={-80}
-                    
                     >
                         Quiz {hover ? <ArrowForward /> : <ArrowRight/> }
+                    </Button>
+                    <Button to="councillors" onMouseEnter={onHover} 
+                    onMouseLeave ={onHover}
+                    primary="true"
+                    dark="true"
+                    smooth={true}
+                    duration={500}
+                    spy={true}
+                    exact='true'
+                    offset={-80}
+                    >
+                        Councillors {hover ? <ArrowForward /> : <ArrowRight/> }
+                    </Button>
+                    <Button to="parties" onMouseEnter={onHover} 
+                    onMouseLeave ={onHover}
+                    primary="true"
+                    dark="true"
+                    smooth={true}
+                    duration={500}
+                    spy={true}
+                    exact='true'
+                    offset={-80}
+                    >
+                        Parties {hover ? <ArrowForward /> : <ArrowRight/> }
+                    </Button>
+                    <Button to="profile" onMouseEnter={onHover} 
+                    onMouseLeave ={onHover}
+                    primary="true"
+                    dark="true"
+                    smooth={true}
+                    duration={500}
+                    spy={true}
+                    exact='true'
+                    offset={-80}
+                    >
+                        Profile {hover ? <ArrowForward /> : <ArrowRight/> }
                     </Button>
                 </HeroBtnWrapper>
             </HeroContent>

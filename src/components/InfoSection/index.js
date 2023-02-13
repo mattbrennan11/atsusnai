@@ -1,4 +1,6 @@
 import React from 'react'
+//import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+//import {Quiz} from 'quiz.js'
 import { Button } from '../ButtonElement';
 import { InfoContainer, InfoWrapper, InfoRow, Column1, Column2, TextWrapper, TopLine, Heading, Subtitle, BtnWrap, ImgWrap, Img } from './InfoElements';
 
@@ -24,7 +26,8 @@ headline, darkText, description, buttonLabel, img, alt, primary, dark, dark2}) =
                                 primary={primary ? 1 :0}
                                 dark={dark ? 1 : 0}
                                 dark2={dark2 ? 1 :0}
-                                >{buttonLabel}</Button>
+                                >
+                                {buttonLabel}</Button>
                             </BtnWrap>
                         </TextWrapper>
                     </Column1>

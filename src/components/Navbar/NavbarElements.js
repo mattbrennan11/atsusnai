@@ -4,7 +4,7 @@ import { Link as LinkScroll } from 'react-scroll';
 
 export const Nav = styled.nav`
     background: ${({ scrollNav }) => (scrollNav ? '#000' : 'transparent')};
-    height: 90px;
+    height: 65px;
     margin-top: -100px;
     display: flex;
     justify-content: center;
@@ -94,15 +94,17 @@ export const NavBtn = styled.nav`
         display:none;
     }
 `;
-
-export const NavBtnLink = styled(LinkRouter)`
-    border-radius: 50px;
+//(LinkRouter)
+export const NavBtnLink = styled.nav`
+    border-radius: 20px;
     background: #01bf71;
+    align-items: center;
     white-space: nowrap;
-    padding: 4px 14px;
+    padding: 10px 40px;
     color: #010606;
-    font-size: 16px;
+    font-size: 12px;
     outline: none;
+    margin-left: 15px;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease-in-out;

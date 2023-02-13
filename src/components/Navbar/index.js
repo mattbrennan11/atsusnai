@@ -2,8 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {FaBars} from 'react-icons/fa';
 import { animateScroll as scroll } from 'react-scroll';
 import {Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink } from './NavbarElements';
+import {
+    withAuthenticator,
 
-const Navbar = ({ toggle }) => {
+  } from "@aws-amplify/ui-react";
+
+const Navbar = ({ toggle, signOut }) => {
 
     const [scrollNav, setScrollNav] = useState(false)
 
@@ -26,8 +30,8 @@ const Navbar = ({ toggle }) => {
   return (
    <>
     <Nav scrollNav={scrollNav}>
+    <NavLogo to='/' onClick={toggleHome}>ats us nai</NavLogo>
         <NavbarContainer>
-            <NavLogo to='/' onClick={toggleHome}>ats us nai</NavLogo>
             <MobileIcon onClick={toggle}>
                 <FaBars />
             </MobileIcon>
@@ -50,32 +54,34 @@ const Navbar = ({ toggle }) => {
                     spy={true}
                     exact='true'
                     offset={-80}
-                    
                     >Councillors</NavLinks>
                 </NavItem>
                 <NavItem>
                     <NavLinks 
-                    to="councils"
+                    to="parties"
                     smooth={true}
                     duration={500}
                     spy={true}
                     exact='true'
                     offset={-80}
-                    >Councils</NavLinks>
+                    >Party</NavLinks>
                 </NavItem>
                 <NavItem>
                     <NavLinks 
-                    to="contact"
+                    to="profile"
                     smooth={true}
                     duration={500}
                     spy={true}
                     exact='true'
                     offset={-80}
-                    >Contact</NavLinks>
+                    >Profile</NavLinks>
                 </NavItem>
+                
                 <NavBtn>
-                <NavBtnLink to="/signin">Sign In</NavBtnLink>
-            </NavBtn>
+                    
+                   <NavBtnLink onClick={signOut}Sign Out>Sign Out</NavBtnLink>  
+                     
+                     </NavBtn>
             </NavMenu>
             
         </NavbarContainer>
@@ -84,4 +90,10 @@ const Navbar = ({ toggle }) => {
   );
 };
 
-export default Navbar;
+export default withAuthenticator(Navbar);
+
+//<Button onClick={signOut}>Sign Out</Button>
+
+//<NavBtn>
+    //            <NavBtnLink to="/src/index.html">Sign In</NavBtnLink>
+       //     </NavBtn>
