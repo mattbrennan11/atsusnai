@@ -1,0 +1,10 @@
+{
+  "resourceName": "councillors",
+  "tableName": "councillors",
+  "partitionKey": {
+    "fieldName": "uuid",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

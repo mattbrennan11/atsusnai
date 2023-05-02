@@ -1,0 +1,5 @@
+{
+  "tableName": "faq",
+  "partitionKeyName": "uuid",
+  "partitionKeyType": "S"
+}

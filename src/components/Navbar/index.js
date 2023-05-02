@@ -1,99 +1,47 @@
-import React, {useState, useEffect} from 'react';
-import {FaBars} from 'react-icons/fa';
-import { animateScroll as scroll } from 'react-scroll';
-import {Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink } from './NavbarElements';
-import {
-    withAuthenticator,
+import Container from 'react-bootstrap/Container';
 
-  } from "@aws-amplify/ui-react";
 
-const Navbar = ({ toggle, signOut }) => {
+import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
-    const [scrollNav, setScrollNav] = useState(false)
+import React from 'react';
 
-    const changeNav = ()=> {
-        if(window.scrollY >= 80){
-            setScrollNav(true)
-        } else {
-            setScrollNav(false)
-        }
-    }
+import {withAuthenticator} from "@aws-amplify/ui-react";
 
-    useEffect(() => {
-        window.addEventListener('scroll', changeNav)
-    }, []);
+const NavExample = ({signOut}) => {
+    
+    return (
+      <Navbar sticky="top" bg="dark" variant="dark" expand="lg">
+        <Container>
+          <Navbar.Brand href="/">Ats Us Nai</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+            <Nav.Link href="/profile">Profile</Nav.Link>
+              <Nav.Link href="/quiz">Quiz</Nav.Link>
+              <Nav.Link href="/discuss">Discuss</Nav.Link>
+              <NavDropdown title="Councillors" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/antrim">Antrim & Newtonabbey</NavDropdown.Item>
+              <NavDropdown.Item href="/ards">Ards & North Down</NavDropdown.Item>
+              <NavDropdown.Item href="/armagh">Armagh City, Banbridge, & Craigavon</NavDropdown.Item>
+              <NavDropdown.Item href="/belfast">Belfast</NavDropdown.Item>
+              <NavDropdown.Item href="/causeway">Causeway Coast & Glens</NavDropdown.Item>
+              <NavDropdown.Item href="/fermanagh">Fermanagh & Omagh</NavDropdown.Item>
+              <NavDropdown.Item href="/lisburn">Lisburn & Castlereagh</NavDropdown.Item>
+              <NavDropdown.Item href="/ulster">Mid Ulster</NavDropdown.Item>
+              <NavDropdown.Item href="/midantrim">Mid & East Antrim</NavDropdown.Item>
+              <NavDropdown.Item href="/newry">Newry Mourne & Down</NavDropdown.Item>
+            </NavDropdown>
+              <Nav.Link href="/parties">Political Parties</Nav.Link>
+              <Nav.Link href="/faq">FAQ</Nav.Link>
+            </Nav>
+            <Button variant="primary" size="sm" onClick={signOut}>Sign Out</Button>
+            </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    );
+  }
 
-    const toggleHome = () =>{
-        scroll.scrollToTop();
-    };
-
-  return (
-   <>
-    <Nav scrollNav={scrollNav}>
-    <NavLogo to='/' onClick={toggleHome}>ats us nai</NavLogo>
-        <NavbarContainer>
-            <MobileIcon onClick={toggle}>
-                <FaBars />
-            </MobileIcon>
-            <NavMenu>
-                <NavItem>
-                    <NavLinks 
-                    to="quiz"
-                    smooth={true}
-                    duration={500}
-                    spy={true}
-                    exact='true'
-                    offset={-80}
-                    >Quiz</NavLinks>
-                </NavItem>
-                <NavItem>
-                    <NavLinks 
-                    to="councillors"
-                    smooth={true}
-                    duration={500}
-                    spy={true}
-                    exact='true'
-                    offset={-80}
-                    >Councillors</NavLinks>
-                </NavItem>
-                <NavItem>
-                    <NavLinks 
-                    to="parties"
-                    smooth={true}
-                    duration={500}
-                    spy={true}
-                    exact='true'
-                    offset={-80}
-                    >Party</NavLinks>
-                </NavItem>
-                <NavItem>
-                    <NavLinks 
-                    to="profile"
-                    smooth={true}
-                    duration={500}
-                    spy={true}
-                    exact='true'
-                    offset={-80}
-                    >Profile</NavLinks>
-                </NavItem>
-                
-                <NavBtn>
-                    
-                   <NavBtnLink onClick={signOut}Sign Out>Sign Out</NavBtnLink>  
-                     
-                     </NavBtn>
-            </NavMenu>
-            
-        </NavbarContainer>
-    </Nav>
-   </>
-  );
-};
-
-export default withAuthenticator(Navbar);
-
-//<Button onClick={signOut}>Sign Out</Button>
-
-//<NavBtn>
-    //            <NavBtnLink to="/src/index.html">Sign In</NavBtnLink>
-       //     </NavBtn>
+export default withAuthenticator(NavExample); 

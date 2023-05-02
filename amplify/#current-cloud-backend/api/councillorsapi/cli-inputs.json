@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "paths": {
+    "/councillors": {
+      "name": "/councillors",
+      "lambdaFunction": "councillorslambda",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ],
+        "groups": {
+          "Admin": [
+            "create",
+            "read",
+            "update",
+            "delete"
+          ]
+        }
+      }
+    }
+  }
+}

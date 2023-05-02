@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  background-color: black;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -12,23 +12,16 @@ code {
     monospace;
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 .main-title {
-  font-family: 'MonteCarlo', cursive;
+  font-family: 'Helvetica Neue';
   font-size: 4.5vw;  
-  position: fixed;
-  top: 8%;
+  position: sticky;
+  color: white;
+  top: 15%;
   right: 37.5%;
-  align-content: center;
-  display: flex;
-  justify-content: space-evenly;
+  align-self: center;
+  justify-content: center;
+  text-align-last: center;
 }
 
 @keyframes fadein {
@@ -43,43 +36,16 @@ body {
   }
 }
 
+
 * {
-  font-family: 'Montserrat', sans-serif;
-  color: #ffffff;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: black;
+ 
 }
 
 .question {
-  font-family: 'MonteCarlo', cursive;
+  font-family: 'Helvetica Neue';
   animation: fadein 2s;
-}
-
-/*body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 97vh;
-  /* Animation 
-  background-image: url('./assets/background/Background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  transition: all 1s;
-  position:relative;
-  z-index:-1;
-}*/
-
-body:before {
-  content:"";
-  position: absolute;
-  z-index:-1;
-  top:0;
-  right:0;
-  left:0;
-  bottom:0;
-  background: linear-gradient(to right,rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 0.35) 45% 55%, rgba(90, 88, 95, 0.25) 75% 85%, rgba(255, 255, 255, 0.0));
-  background-size:600% 100%;
-  background-position:right;
-  animation:change 5s infinite alternate;
-  transition: ease-in-out;
 }
 
 @keyframes change {
@@ -97,74 +63,35 @@ body:before {
   }
 }
 
-.app {
+
+.app2 {
   z-index: 1;
-  background-color: #273034;
-  width: 28vw;
-  min-height: 1vh;
+  background-color: rgb(37, 106, 226);
   height: min-content;
-  border-radius: 15px;
   padding: 6%;
-  margin-top: 20%;
-  margin-bottom: 0%;
-  box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
   display: flex;
-  
+  position: sticky;
   justify-content: space-evenly;
   animation: fadein 2s;
-}
-
-.discord {
-  font-size: calc(8px + 1vw);
-  text-align: center;
-  position: fixed;
-  bottom: 5%;
-  right: 47%;
-  margin: 10;
-  animation: fadein 3s;
-  color: #f5f382;
-}
-
-.twitter {
-  font-size: calc(8px + 1vw);
-  text-align: center;
-  position: fixed;
-  bottom: 5%;
-  right: 49.5%;
-  margin: 10;
-  animation: fadein 3s;
-  color: #f5f382;
 }
 
 .score-section {
   display: flex;
   flex-direction: column;
+  position: sticky;
   text-align: center;
-  font-size: calc(3px + 1.5vw);
-  margin-top: 35%;
-  margin-bottom: 15%;
+  font-size: 2.5vw;
+  color: white;
   justify-content: center;
   align-content: center;
   transition: 1;
   animation: fadein 2s;
-  text-shadow: 4px 4px 4px #000;
 }
 
 @keyframes glow {
   to {
       text-shadow: 5px 5px 40px rgb(0, 106, 136);
   }
-}
-
-.house {
-  display: flex;
-  margin: auto;
-  margin-top: 20%;
-  text-align: center;
-  transition: 3;
-  animation: fadein 5s, glow 1s infinite alternate;
-  font-family: 'MonteCarlo', cursive;
-  font-size: calc(6px + 3.5vw);
 }
 
 .part-two {
@@ -182,21 +109,24 @@ body:before {
 
 .question-count {
   margin-bottom: 20px;
-  font-family: 'MonteCarlo', cursive;
+  font-family: 'Helvetica Neue';
   animation: fadein 0.5s;
 }
 
 .question-count span {
   font-size: 2.5vw;
-  font-family: 'MonteCarlo', cursive;
+  font-family: 'Helvetica Neue';
   animation: fadein 0.5s;
+  color: white;
 }
 
 .question-text {
   margin-bottom: 1.8vh;
   line-height: 1.6;
+  color: white;
   animation: fadein 0.5s;
-  font-size: calc(5px + 0.8vw);
+  font-size: 2.5vw;  
+ 
 }
 
 .timer-text {
@@ -213,25 +143,10 @@ body:before {
 .answer-section {
   width: 100%;
   display: flex;
+  font-size: 2.5vw;
   flex-direction: column;
   justify-content: space-between;
   animation: fadein 2s;
-}
-
-button {
-  width: 26vw;
-  font-size: calc(4px + 0.7vw);
-  color: #ffffff;
-  background-color: transparent;
-  border-radius: 7px;
-  display: flex;
-  padding: 3%;
-  margin-bottom: 8px;
-  justify-content: flex-start;
-  align-items: center;
-  border: 1px solid #927c6c;
-  cursor: pointer;
-  transition: 0.5s;
 }
 
 .intro-part {
@@ -244,11 +159,12 @@ button {
 .intro-text {
   align-self: center;
   margin-bottom: 0px;
+  color: white;
+  font-family: 'Helvetica Neue';
+  font-size: 2.5vw;  
   justify-content: center;
   text-align: justify;
   text-align-last: center;
-  font-size: calc(0.7vw + 6px);
-  font-weight: lighter;
   margin-top: 5%;
   margin-bottom: 5%;
   line-height: 140%;
@@ -270,9 +186,27 @@ button {
 .start-button {
   width: 15vw;
   font-size: calc(5px + 2vw);
-  font-family: 'MonteCarlo', cursive;
+  font-family: 'Helvetica Neue';
   align-self: center;
-  color: #ffffff;
+  color: white;
+  background-color: transparent;
+  border-radius: 7px;
+  display: flex;
+  padding: 10px;
+  margin-bottom: 5px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #927c6c;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.start-button2 {
+  width: 25vw;
+  font-size: calc(5px + 2vw);
+  font-family: 'Helvetica Neue';
+  align-self: center;
+  color: white;
   background-color: transparent;
   border-radius: 7px;
   display: flex;
@@ -286,15 +220,14 @@ button {
 }
 
 .correct {
-  background-color: #2f922f;
-}
+  background-color: #2f922f;}
 
 .incorrect {
   background-color: #ff3333;
 }
 
 button:hover {
-  background-color: #814b4a;
+  background-color: #88ceea;
   transition: 0.5s;
 }
 
@@ -304,4 +237,258 @@ button:focus {
 
 button svg {
   margin-right: 5px;
+}
+
+
+
+.Parties {
+  background-color: black;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  padding-bottom: 1.5rem;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  color: black;
+  text-align: left;
+}
+
+.FAQ {
+  background-color: rgb(249, 246, 246);
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  padding-bottom: 1.5rem;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  color: black;
+  text-align: left;
+}
+
+.Quiz { 
+  background-color: black;
+  color:black;
+  padding-top: 1.5rem;
+  min-height: 100vh;
+  padding-bottom: 4.5rem;
+  padding-right:1.5rem;
+  padding-left: 1.5rem;
+}
+
+
+
+.Quiz2 {
+  background-color: black;
+  padding-bottom: 4.5rem;
+ 
+  
+ 
+}
+
+.Quiz3 { 
+  background-color: black;
+  color:black;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-right:1.5rem;
+  padding-left: 1.5rem;
+}
+.Councillors {
+  background-color: black;
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;  
+}
+
+
+
+.insideParty {
+  background-color: rgb(249, 246, 246);
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  padding-bottom: 1.5rem;
+  padding-top:1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  color: black;
+  text-align: left;
+}
+
+.insideLanding {
+  background-color: black;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  padding-bottom: 1.5rem;
+  padding-top:1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  color: black;
+  text-align: left;
+}
+
+h1{
+  font : "Helvetica Neue";
+  color: white;
+  font-size: calc(0.7vw + 24px);
+  background-color: purple;
+  margin:0;
+  text-align: center;
+  
+} 
+
+.Landing {
+  background-color: black;
+  min-height: 20vh;
+  position: relative;
+  display: flex;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+.Landing2 {
+  background-color: black;
+  min-height: 25vh;
+  position: relative;
+  display: flex;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+.Landing3 {
+  background-color: black;
+  min-height: 25vh;
+  position: relative;
+  display: flex;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+h0{
+  font : "Helvetica Neue";
+  color: white;
+  font-size: calc(0.7vw + 24px);
+  text-align: center;
+  padding-bottom: 1.5rem;
+}
+
+
+img{
+  float:right;
+}
+
+Img{
+  padding-bottom: 1.5rem;
+}
+
+h3{
+  font : "Helvetica Neue";
+  color: black;
+  font-size: calc(0.7vw + 14px);
+  float:left;
+}
+
+.buttonParty{
+  float:left;
+}
+
+.Faq{
+  background-color: black;
+  color: black;
+  height: 100vh;
+}
+
+h2{
+  font : "Helvetica Neue";
+  color: white;
+  background-color: rgb(37, 106, 226);
+  font-size: calc(0.7vw + 24px);
+  text-align: center;
+ 
+}
+
+h6{
+  font : "Helvetica Neue";
+  color: white;
+  background-color: black;
+  font-size: calc(0.7vw + 24px);
+  text-align: center;
+  
+}
+
+
+
+h5{
+  font : "Helvetica Neue";
+  color: black;
+  font-size: calc(0.7vw + 14px);
+  text-align: left;
+  padding-bottom: 1.5rem;
+}
+
+h4{
+  font : "Helvetica Neue";
+  color: white;
+  font-size: calc(4.7vw + 24px);
+  text-align: center;
+  padding-bottom: 1.5rem;
+}
+
+.footer--pin {
+  position: absolute;
+  left: 0;
+  width : 100%;
+  bottom: 0;
+}
+
+#myVideo {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  background: #232a34;
+}
+
+/* Style the button used to pause/play the video */
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
 }

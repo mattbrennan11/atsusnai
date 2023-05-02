@@ -164,9 +164,33 @@
             "Ref": "UnauthRoleName"
           },
           "env": "staging",
-          "userInfo": {
+          "partycountapi": {
             "Fn::GetAtt": [
-              "apiuserInfo",
+              "apipartycountapi",
+              "Outputs.ApiId"
+            ]
+          },
+          "partyapi": {
+            "Fn::GetAtt": [
+              "apipartyapi",
+              "Outputs.ApiId"
+            ]
+          },
+          "faqapi": {
+            "Fn::GetAtt": [
+              "apifaqapi",
+              "Outputs.ApiId"
+            ]
+          },
+          "councillorsapi": {
+            "Fn::GetAtt": [
+              "apicouncillorsapi",
+              "Outputs.ApiId"
+            ]
+          },
+          "discussionapi": {
+            "Fn::GetAtt": [
+              "apidiscussionapi",
               "Outputs.ApiId"
             ]
           }
@@ -216,21 +240,153 @@
         "functionatsusnaic25acefcc25acefcPostConfirmation"
       ]
     },
-    "apiuserInfo": {
+    "apipartycountapi": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/api/userInfo-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/api/partycountapi-cloudformation-template.json",
         "Parameters": {
-          "functionuserInfoLamdbaName": {
+          "functionpartycountlambdaName": {
             "Fn::GetAtt": [
-              "functionuserInfoLamdba",
+              "functionpartycountlambda",
               "Outputs.Name"
             ]
           },
-          "functionuserInfoLamdbaArn": {
+          "functionpartycountlambdaArn": {
             "Fn::GetAtt": [
-              "functionuserInfoLamdba",
+              "functionpartycountlambda",
               "Outputs.Arn"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "apipartyapi": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/api/partyapi-cloudformation-template.json",
+        "Parameters": {
+          "functionpartylambdaName": {
+            "Fn::GetAtt": [
+              "functionpartylambda",
+              "Outputs.Name"
+            ]
+          },
+          "functionpartylambdaArn": {
+            "Fn::GetAtt": [
+              "functionpartylambda",
+              "Outputs.Arn"
+            ]
+          },
+          "authatsusnaic25acefcc25acefcUserPoolId": {
+            "Fn::GetAtt": [
+              "authatsusnaic25acefcc25acefc",
+              "Outputs.UserPoolId"
+            ]
+          },
+          "authuserPoolGroupsAdminGroupRole": {
+            "Fn::GetAtt": [
+              "authuserPoolGroups",
+              "Outputs.AdminGroupRole"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "apifaqapi": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/api/faqapi-cloudformation-template.json",
+        "Parameters": {
+          "functionlambdafaqName": {
+            "Fn::GetAtt": [
+              "functionlambdafaq",
+              "Outputs.Name"
+            ]
+          },
+          "functionlambdafaqArn": {
+            "Fn::GetAtt": [
+              "functionlambdafaq",
+              "Outputs.Arn"
+            ]
+          },
+          "authatsusnaic25acefcc25acefcUserPoolId": {
+            "Fn::GetAtt": [
+              "authatsusnaic25acefcc25acefc",
+              "Outputs.UserPoolId"
+            ]
+          },
+          "authuserPoolGroupsAdminGroupRole": {
+            "Fn::GetAtt": [
+              "authuserPoolGroups",
+              "Outputs.AdminGroupRole"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "apicouncillorsapi": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/api/councillorsapi-cloudformation-template.json",
+        "Parameters": {
+          "functioncouncillorslambdaName": {
+            "Fn::GetAtt": [
+              "functioncouncillorslambda",
+              "Outputs.Name"
+            ]
+          },
+          "functioncouncillorslambdaArn": {
+            "Fn::GetAtt": [
+              "functioncouncillorslambda",
+              "Outputs.Arn"
+            ]
+          },
+          "authatsusnaic25acefcc25acefcUserPoolId": {
+            "Fn::GetAtt": [
+              "authatsusnaic25acefcc25acefc",
+              "Outputs.UserPoolId"
+            ]
+          },
+          "authuserPoolGroupsAdminGroupRole": {
+            "Fn::GetAtt": [
+              "authuserPoolGroups",
+              "Outputs.AdminGroupRole"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "apidiscussionapi": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/api/discussionapi-cloudformation-template.json",
+        "Parameters": {
+          "functiondiscussionlambdaName": {
+            "Fn::GetAtt": [
+              "functiondiscussionlambda",
+              "Outputs.Name"
+            ]
+          },
+          "functiondiscussionlambdaArn": {
+            "Fn::GetAtt": [
+              "functiondiscussionlambda",
+              "Outputs.Arn"
+            ]
+          },
+          "authatsusnaic25acefcc25acefcUserPoolId": {
+            "Fn::GetAtt": [
+              "authatsusnaic25acefcc25acefc",
+              "Outputs.UserPoolId"
+            ]
+          },
+          "authuserPoolGroupsAdminGroupRole": {
+            "Fn::GetAtt": [
+              "authuserPoolGroups",
+              "Outputs.AdminGroupRole"
             ]
           },
           "env": "staging"
@@ -243,7 +399,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/auth/atsusnaic25acefcc25acefc-cloudformation-template.json",
         "Parameters": {
           "identityPoolName": "atsusnaic25acefc_identitypool_c25acefc",
-          "allowUnauthenticatedIdentities": false,
+          "allowUnauthenticatedIdentities": true,
           "resourceNameTruncated": "atsusnc25acefc",
           "userPoolName": "atsusnaic25acefc_userpool_c25acefc",
           "autoVerifiedAttributes": "email",
@@ -368,22 +524,22 @@
         }
       }
     },
-    "functionuserInfoLamdba": {
+    "functionpartycountlambda": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/userInfoLamdba-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/partycountlambda-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
-          "s3Key": "amplify-builds/userInfoLamdba-354c6c7872587745617a-build.zip",
-          "storageuserInfoDBName": {
+          "s3Key": "amplify-builds/partycountlambda-69314a2b2b3644476b6e-build.zip",
+          "storagepartycountName": {
             "Fn::GetAtt": [
-              "storageuserInfoDB",
+              "storagepartycount",
               "Outputs.Name"
             ]
           },
-          "storageuserInfoDBArn": {
+          "storagepartycountArn": {
             "Fn::GetAtt": [
-              "storageuserInfoDB",
+              "storagepartycount",
               "Outputs.Arn"
             ]
           },
@@ -391,13 +547,153 @@
         }
       }
     },
-    "storageuserInfoDB": {
+    "functionpartylambda": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/storage/userInfoDB-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/partylambda-cloudformation-template.json",
         "Parameters": {
-          "tableName": "user",
-          "partitionKeyName": "email",
+          "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
+          "s3Key": "amplify-builds/partylambda-493435306854725a4850-build.zip",
+          "storagepartyName": {
+            "Fn::GetAtt": [
+              "storageparty",
+              "Outputs.Name"
+            ]
+          },
+          "storagepartyArn": {
+            "Fn::GetAtt": [
+              "storageparty",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "functionlambdafaq": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/lambdafaq-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
+          "s3Key": "amplify-builds/lambdafaq-7130744d456f616a4d43-build.zip",
+          "storagefaqName": {
+            "Fn::GetAtt": [
+              "storagefaq",
+              "Outputs.Name"
+            ]
+          },
+          "storagefaqArn": {
+            "Fn::GetAtt": [
+              "storagefaq",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "functioncouncillorslambda": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/councillorslambda-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
+          "s3Key": "amplify-builds/councillorslambda-5035573263616e326335-build.zip",
+          "storagecouncillorsName": {
+            "Fn::GetAtt": [
+              "storagecouncillors",
+              "Outputs.Name"
+            ]
+          },
+          "storagecouncillorsArn": {
+            "Fn::GetAtt": [
+              "storagecouncillors",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "functiondiscussionlambda": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/discussionlambda-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
+          "s3Key": "amplify-builds/discussionlambda-5a597a6d7949416b4e55-build.zip",
+          "storagediscussionName": {
+            "Fn::GetAtt": [
+              "storagediscussion",
+              "Outputs.Name"
+            ]
+          },
+          "storagediscussionArn": {
+            "Fn::GetAtt": [
+              "storagediscussion",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "storagepartycount": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/storage/partycount-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "partycount",
+          "partitionKeyName": "uuid",
+          "partitionKeyType": "N",
+          "env": "staging"
+        }
+      }
+    },
+    "storageparty": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/storage/party-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "party",
+          "partitionKeyName": "uuid",
+          "partitionKeyType": "S",
+          "env": "staging"
+        }
+      }
+    },
+    "storagefaq": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/storage/faq-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "faq",
+          "partitionKeyName": "uuid",
+          "partitionKeyType": "S",
+          "env": "staging"
+        }
+      }
+    },
+    "storagecouncillors": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/storage/councillors-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "councillors",
+          "partitionKeyName": "uuid",
+          "partitionKeyType": "S",
+          "env": "staging"
+        }
+      }
+    },
+    "storagediscussion": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/storage/discussion-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "discussion",
+          "partitionKeyName": "uuid",
           "partitionKeyType": "S",
           "env": "staging"
         }

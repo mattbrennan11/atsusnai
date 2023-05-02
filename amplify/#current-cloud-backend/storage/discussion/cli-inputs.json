@@ -1,0 +1,10 @@
+{
+  "resourceName": "discussion",
+  "tableName": "discussion",
+  "partitionKey": {
+    "fieldName": "uuid",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

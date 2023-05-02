@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "paths": {
+    "/faq": {
+      "name": "/faq",
+      "lambdaFunction": "lambdafaq",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "read"
+        ],
+        "guest": [
+          "read"
+        ],
+        "groups": {
+          "Admin": [
+            "create",
+            "read",
+            "update",
+            "delete"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "resourceName": "partycount",
+  "tableName": "partycount",
+  "partitionKey": {
+    "fieldName": "uuid",
+    "fieldType": "number"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

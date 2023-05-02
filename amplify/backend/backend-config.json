@@ -1,5 +1,132 @@
 {
-  "api": {},
+  "api": {
+    "councillorsapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "councillorslambda"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "atsusnaic25acefcc25acefc"
+        },
+        {
+          "attributes": [
+            "AdminGroupRole"
+          ],
+          "category": "auth",
+          "resourceName": "userPoolGroups"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "discussionapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "discussionlambda"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "atsusnaic25acefcc25acefc"
+        },
+        {
+          "attributes": [
+            "AdminGroupRole"
+          ],
+          "category": "auth",
+          "resourceName": "userPoolGroups"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "faqapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "lambdafaq"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "atsusnaic25acefcc25acefc"
+        },
+        {
+          "attributes": [
+            "AdminGroupRole"
+          ],
+          "category": "auth",
+          "resourceName": "userPoolGroups"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "partyapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "partylambda"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "atsusnaic25acefcc25acefc"
+        },
+        {
+          "attributes": [
+            "AdminGroupRole"
+          ],
+          "category": "auth",
+          "resourceName": "userPoolGroups"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "partycountapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "partycountlambda"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
     "atsusnaic25acefcc25acefc": {
       "customAuth": false,
@@ -63,7 +190,7 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "userInfoLamdba": {
+    "councillorslambda": {
       "build": true,
       "dependsOn": [
         {
@@ -76,7 +203,83 @@
             "Arn"
           ],
           "category": "storage",
-          "resourceName": "userInfoDB"
+          "resourceName": "councillors"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "discussionlambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "discussion"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "lambdafaq": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "faq"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "partycountlambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "partycount"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "partylambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "party"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -116,25 +319,127 @@
         }
       ]
     },
-    "AMPLIFY_function_userInfoLamdba_deploymentBucketName": {
+    "AMPLIFY_function_councillorslambda_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "userInfoLamdba"
+          "resourceName": "councillorslambda"
         }
       ]
     },
-    "AMPLIFY_function_userInfoLamdba_s3Key": {
+    "AMPLIFY_function_councillorslambda_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "userInfoLamdba"
+          "resourceName": "councillorslambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_discussionlambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "discussionlambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_discussionlambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "discussionlambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_lambdafaq_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "lambdafaq"
+        }
+      ]
+    },
+    "AMPLIFY_function_lambdafaq_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "lambdafaq"
+        }
+      ]
+    },
+    "AMPLIFY_function_partycountlambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "partycountlambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_partycountlambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "partycountlambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_partylambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "partylambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_partylambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "partylambda"
+        }
+      ]
+    },
+    "AMPLIFY_storage_atsusnaic21995e0_bucketName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "atsusnaic21995e0"
+        }
+      ]
+    },
+    "AMPLIFY_storage_atsusnaic21995e0_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "atsusnaic21995e0"
         }
       ]
     }
   },
   "storage": {
-    "userInfoDB": {
+    "atsusnaic21995e0": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3",
+      "serviceType": "imported"
+    },
+    "councillors": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "discussion": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "faq": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "party": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "partycount": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     }

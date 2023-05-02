@@ -1,6 +1,6 @@
 {
   "identityPoolName": "atsusnaic25acefc_identitypool_c25acefc",
-  "allowUnauthenticatedIdentities": false,
+  "allowUnauthenticatedIdentities": true,
   "resourceNameTruncated": "atsusnc25acefc",
   "userPoolName": "atsusnaic25acefc_userpool_c25acefc",
   "autoVerifiedAttributes": [

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "paths": {
+    "/partycount": {
+      "name": "/partycount",
+      "lambdaFunction": "partycountlambda",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ]
+      }
+    }
+  }
+}

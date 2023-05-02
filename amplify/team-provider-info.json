@@ -23,9 +23,26 @@
           "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
           "s3Key": "amplify-builds/atsusnaic25acefcc25acefcPostConfirmation-544e4970584435492f58-build.zip"
         },
-        "userInfoLamdba": {
+        "itemsLambda": {},
+        "partycountlambda": {
           "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
-          "s3Key": "amplify-builds/userInfoLamdba-354c6c7872587745617a-build.zip"
+          "s3Key": "amplify-builds/partycountlambda-69314a2b2b3644476b6e-build.zip"
+        },
+        "partylambda": {
+          "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
+          "s3Key": "amplify-builds/partylambda-493435306854725a4850-build.zip"
+        },
+        "lambdafaq": {
+          "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
+          "s3Key": "amplify-builds/lambdafaq-7130744d456f616a4d43-build.zip"
+        },
+        "councillorslambda": {
+          "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
+          "s3Key": "amplify-builds/councillorslambda-5035573263616e326335-build.zip"
+        },
+        "discussionlambda": {
+          "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
+          "s3Key": "amplify-builds/discussionlambda-5a597a6d7949416b4e55-build.zip"
         }
       },
       "auth": {
@@ -33,7 +50,22 @@
         "userPoolGroups": {}
       },
       "storage": {
-        "userInfoDB": {}
+        "atsusnaic21995e0": {
+          "bucketName": "councillorsbucket",
+          "region": "us-east-1"
+        },
+        "partycount": {},
+        "party": {},
+        "faq": {},
+        "councillors": {},
+        "discussion": {}
+      },
+      "api": {
+        "partycountapi": {},
+        "partyapi": {},
+        "faqapi": {},
+        "councillorsapi": {},
+        "discussionapi": {}
       }
     }
   }

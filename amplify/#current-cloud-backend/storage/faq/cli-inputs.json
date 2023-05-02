@@ -1,0 +1,10 @@
+{
+  "resourceName": "faq",
+  "tableName": "faq",
+  "partitionKey": {
+    "fieldName": "uuid",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

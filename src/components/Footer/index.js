@@ -1,52 +1,19 @@
-import React from 'react'
-import {FaFacebook, FaInstagram, FaYoutube, FaTwitter} from 'react-icons/fa'
-import {FooterContainer, FooterWrapper, FooterLinksContainer, FooterLinksWrapper, SocialMedia, SocialMediaWrapper, SocialLogo, WebsiteRights, SocialIcons, SocialIconLink} from './FooterElements'
-import {animateScroll as scroll} from 'react-scroll'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import React, {useState, useEffect} from 'react';
 
-const Footer = () => {
+const FooterExample = () => {
+    
+    return (
+      <Navbar position="absolute" fixed="bottom" bg="dark" variant="dark" expand="lg" >
+        <Container>
+          <Navbar.Brand href="/">Ats Us Nai</Navbar.Brand>
+            <Nav className="me-auto">
+            </Nav>
+        </Container>
+      </Navbar>
+    );
+  }
 
-    const toggleHome = () =>{
-        scroll.scrollToTop();
-    };
-  return (
-   <FooterContainer>
-    <FooterWrapper>
-        <FooterLinksContainer>
-            
-            <FooterLinksWrapper>
-            </FooterLinksWrapper>
-        </FooterLinksContainer>
-        <SocialMedia>
-            <SocialMediaWrapper>
-                <SocialLogo to='/' onClick={toggleHome}>
-                    ats us nai
-                </SocialLogo>
-                <WebsiteRights>ats us nai copyright
-                All rights reserved</WebsiteRights>
-                <SocialIcons>
-                    <SocialIconLink href="/" target="_blank"
-                    aria-label="Facebook">
-                        <FaFacebook />
-                    </SocialIconLink>
-                    <SocialIconLink href="/" target="_blank"
-                    aria-label="Instagram">
-                        <FaInstagram />
-                    </SocialIconLink>
-                    <SocialIconLink href="/" target="_blank"
-                    aria-label="YouTube">
-                        <FaYoutube />
-                    </SocialIconLink>
-                    <SocialIconLink href="/" target="_blank"
-                    aria-label="Twitter">
-                        <FaTwitter />
-                    </SocialIconLink>
-                </SocialIcons>
-            </SocialMediaWrapper>
-
-        </SocialMedia>
-    </FooterWrapper>
-   </FooterContainer>
-  )
-}
-
-export default Footer
+export default (FooterExample);
