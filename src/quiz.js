@@ -8,7 +8,7 @@ import uuid from "uuid"
 import Button from 'react-bootstrap/Button';
 import { withAuthenticator} from "@aws-amplify/ui-react";
 
-const Quiz = ({user}) => {
+const Quiz = () => {
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showQuiz, setShowQuiz] = useState(false);
@@ -150,8 +150,8 @@ const Quiz = ({user}) => {
 						<div className='question-text'>{questions[currentQuestion].questionText}</div>
 					</div>
 					<div className='answer-section'>
-						{questions[currentQuestion].options.map((option) => (
-							<button className='start-button2 button-loader' onClick={() => {answerHandler(option.sinnFein, option.dup, option.sdlp, option.alliance, option.uup);}}>{option.optionText}</button>
+						{questions[currentQuestion].options.map((option, i) => (
+							<button key={i} className='start-button2 button-loader' onClick={() => {answerHandler(option.sinnFein, option.dup, option.sdlp, option.alliance, option.uup);}}>{option.optionText}</button>
 						))}
 					</div>
 				</div> 

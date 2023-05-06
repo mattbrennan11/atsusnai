@@ -4,6 +4,9 @@ import {Amplify, API} from 'aws-amplify'
 import config from './aws-exports'
 import "@aws-amplify/ui-react/styles.css";
 import 'semantic-ui-css/semantic.min.css'
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { Grid,  Form, Segment} from 'semantic-ui-react';
 import { withAuthenticator} from "@aws-amplify/ui-react";
 import NavExample from './components/Navbar'
@@ -118,57 +121,35 @@ function Discuss({user}) {
 
 {
               //Loops through the DynamoDB discussion table
-              comments.map((title) =>{
+              comments.map((title, i) =>{
 
                 if(title.council == userInput){
                 
   return( 
-<>
+
+
+<Col className="d-flex" key={i}>
+          
+          <Card className="flex-fill mt-3">
+            <Card.Header>{title.nickname}</Card.Header>
+            <Card.Body> 
+            <Card.Text>ID: {title.comment}</Card.Text>
+              <Card.Text>Council: {title.date}   {moment(title.date).month(moment(title.date).month()).fromNow()}
+                    {moment.utc(title.date + title.time).local().startOf('seconds').fromNow()}</Card.Text>
+            
+            </Card.Body>
+          </Card>
+        </Col> 
     
 
-    <MDBContainer className="py-5" style={{ maxWidth: "1000px" ,height: "100%"}}>
-      <MDBRow className="justify-content-center">
-        <MDBCol md="12" lg="10">
-          <MDBCard className="text-dark">
-            <MDBCardBody className="p-4">
-              <MDBTypography tag="h2" className="mb-0">
-              </MDBTypography>
-              <br></br>
-     
-   
-              <div className="d-flex flex-start">
-       
-     
-                <div> 
-                  <MDBTypography className="fw-bold mb-1">
-              
-                    <h2>{title.nickname}</h2>
-
-                  </MDBTypography>
-                  <div className="d-flex align-items-center mb-3">
-                  <div className="mb-0">
-                      <h6>{title.comment}</h6>
-                    </div>
-                  </div>
-                  <div className="d-flex align-items-center mb-3">
-                   
-                    <p className="mb-0">
-                    {moment(title.date).month(moment(title.date).month()).fromNow()}
-                    {moment.utc(title.date + title.time).local().startOf('seconds').fromNow()}
+  
+               
+                 
+                  
 
 
-                    </p>
-                    </div>  
-                </div>
-              </div>
-             
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol> 
-      
-      </MDBRow>
-     
-    </MDBContainer></>
+                  
+            
  ) }     } )}
   </section>
 

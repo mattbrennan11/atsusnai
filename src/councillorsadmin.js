@@ -180,12 +180,12 @@ useEffect(() =>{
       <Segment inverted>
  <Form onSubmit={handleSubmit} inverted size='large'>
      <Form.Group>
-       <Form.Input font = "Helvetica Neue" name='name' required='true' value={councillorName} label='Name' placeholder='Display name' width={10} onChange={(e) => setCouncillorName(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='council'required='true' value={councillorCouncil} label='Council' placeholder='Display name' width={10} onChange={(e) => setCouncillorCouncil(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='email' required='true' value={councillorEmail} label='Email' placeholder='Display name' width={10} onChange={(e) => setCouncillorEmail(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='party' required='true' value={councillorParty} label='Party'  placeholder='Display name' width={10} onChange={(e) => setCouncillorParty(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='number' required='true' value={councillorNumber} label='Phone Number' placeholder='Display name' width={10} onChange={(e) => setCouncillorNumber(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='website' required='true' value={councillorWebsite} label='Website' placeholder='Display name' width={10} onChange={(e) => setCouncillorWebsite(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='name' required={true} value={councillorName} label='Name' placeholder='Display name' width={10} onChange={(e) => setCouncillorName(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='council'required={true} value={councillorCouncil} label='Council' placeholder='Display name' width={10} onChange={(e) => setCouncillorCouncil(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='email' required={true} value={councillorEmail} label='Email' placeholder='Display name' width={10} onChange={(e) => setCouncillorEmail(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='party' required={true} value={councillorParty} label='Party'  placeholder='Display name' width={10} onChange={(e) => setCouncillorParty(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='number' required={true} value={councillorNumber} label='Phone Number' placeholder='Display name' width={10} onChange={(e) => setCouncillorNumber(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='website' required={true} value={councillorWebsite} label='Website' placeholder='Display name' width={10} onChange={(e) => setCouncillorWebsite(e.target.value)} error={false} />
       </Form.Group>
      <br></br>
      <Button font = "Helvetica Neue" type='submit'>Create Councillor</Button>     
@@ -198,7 +198,7 @@ useEffect(() =>{
 <Segment inverted>
 <Form onSubmit={handleDelete} inverted size='large'>
 <Form.Group>
-<Form.Input font = "Helvetica Neue" name='nickname' required='true' value={councillorUuid} label='ID' placeholder='Display name' width={2} onChange={(e) => setCouncillorUuid(e.target.value)} error={false} />
+<Form.Input font = "Helvetica Neue" name='nickname' required={true} value={councillorUuid} label='ID' placeholder='Display name' width={2} onChange={(e) => setCouncillorUuid(e.target.value)} error={false} />
 </Form.Group>
 <br></br>
 <Button font = "Helvetica Neue" type='submit'>Delete Councillor</Button>     
@@ -213,13 +213,13 @@ useEffect(() =>{
 <Form.Group>
 
      
-      <Form.Input font = "Helvetica Neue" name='uuid' required='true' value={updateCouncillorUuid} label='Uuid' placeholder='bla' width={10} onChange={(e) =>  setUpdateCouncillorUuid(e.target.value)} error={false} />
-      <Form.Input font = "Helvetica Neue" name='name' required='true' value={updateCouncillorName} label='Name' placeholder='bla' width={10} onChange={(e) =>  setUpdateCouncillorName(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='council' required='true' value={updateCouncillorCouncil} label='Council' placeholder='bla' width={10} onChange={(e) => setUpdateCouncillorCouncil(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='email' required='true' value={updateCouncillorEmail} label='Email' placeholder='Display name' width={10} onChange={(e) => setUpdateCouncillorEmail(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='party' required='true' value={updateCouncillorParty} label='Party'  placeholder='Display name' width={10} onChange={(e) => setUpdateCouncillorParty(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='number' required='true' value={updateCouncillorNumber} label='Phone Number' placeholder='bla' width={10} onChange={(e) => setUpdateCouncillorNumber(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='website' required='true' value={updateCouncillorWebsite} label='Website' placeholder='Display name' width={10} onChange={(e) => setUpdateCouncillorWebsite(e.target.value)} error={false} />
+      <Form.Input font = "Helvetica Neue" name='uuid' required={true} value={updateCouncillorUuid} label='Uuid' placeholder='bla' width={10} onChange={(e) =>  setUpdateCouncillorUuid(e.target.value)} error={false} />
+      <Form.Input font = "Helvetica Neue" name='name' required={true} value={updateCouncillorName} label='Name' placeholder='bla' width={10} onChange={(e) =>  setUpdateCouncillorName(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='council' required={true} value={updateCouncillorCouncil} label='Council' placeholder='bla' width={10} onChange={(e) => setUpdateCouncillorCouncil(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='email' required={true} value={updateCouncillorEmail} label='Email' placeholder='Display name' width={10} onChange={(e) => setUpdateCouncillorEmail(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='party' required={true} value={updateCouncillorParty} label='Party'  placeholder='Display name' width={10} onChange={(e) => setUpdateCouncillorParty(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='number' required={true} value={updateCouncillorNumber} label='Phone Number' placeholder='bla' width={10} onChange={(e) => setUpdateCouncillorNumber(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='website' required={true} value={updateCouncillorWebsite} label='Website' placeholder='Display name' width={10} onChange={(e) => setUpdateCouncillorWebsite(e.target.value)} error={false} />
      
 
 </Form.Group>
@@ -258,7 +258,7 @@ useEffect(() =>{
           
           <Card className="flex-fill mt-3">
             <Card.Header>{councillor.Name}</Card.Header>
-            <Card.Body>
+            <Card.Body> 
             <Card.Text>ID: {councillor.uuid}</Card.Text>
               <Card.Text>Email: {councillor.Email}</Card.Text>
               <Card.Text>Telephone: {councillor.Telephone}</Card.Text>

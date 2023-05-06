@@ -75,10 +75,10 @@ useEffect(() =>{
     
        <Row lg={3} md={2}>
   {
-        parties.map((party) => {
+        parties.map((party, i) => {
          
       return (
-        <Col className="d-flex">
+        <Col className="d-flex" key={i}>
           <Card className="flex-fill mt-3" style={{width: '60rem'}}>
           <Card.Img variant="top" width="60px" height="280px" src={party.img} />
             <Card.Header>{party.name}
@@ -112,11 +112,11 @@ useEffect(() =>{
                 </Card.Text>
                  
            
-  <div class="container-fluid map-col">
-  <div class="col-md-12 col-sm-12 map-col">
-    <div class="google-maps">
-      <div class="map-wrap">
-        <iframe width="100%" height="200" src={party.gmap} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <div className="container-fluid map-col">
+  <div className="col-md-12 col-sm-12 map-col">
+    <div className="google-maps">
+      <div className="map-wrap">
+        <iframe width="100%" height="200" src={party.gmap} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
       </div>
     </div>
   </div>

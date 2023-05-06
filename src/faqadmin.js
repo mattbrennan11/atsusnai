@@ -105,10 +105,10 @@ useEffect(() =>{
      <Segment inverted>
  <Form onSubmit={handleSubmit} inverted size='large'>
      <Form.Group>
-       <Form.Input font = "Helvetica Neue" name='question' required='true' value={faqQuestion} label='Question' placeholder='Display name' width={10} onChange={(e) => setFaqQuestion(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='answer'required='true' value={faqAnswer} label='Answer' placeholder='Display name' width={10} onChange={(e) => setFaqAnswer(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='button' required='true' value={faqButton} label='Button Title' placeholder='Display name' width={10} onChange={(e) => setFaqButton(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='link' required='true' value={faqLink} label='Link'  placeholder='Display name' width={10} onChange={(e) => setFaqLink(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='question' required={true} value={faqQuestion} label='Question' placeholder='Display name' width={10} onChange={(e) => setFaqQuestion(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='answer'required={true} value={faqAnswer} label='Answer' placeholder='Display name' width={10} onChange={(e) => setFaqAnswer(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='button' required={true} value={faqButton} label='Button Title' placeholder='Display name' width={10} onChange={(e) => setFaqButton(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='link' required={true} value={faqLink} label='Link'  placeholder='Display name' width={10} onChange={(e) => setFaqLink(e.target.value)} error={false} />
       </Form.Group>
      <br></br>
      <Button font = "Helvetica Neue" type='submit'>Create FAQ</Button>     
@@ -120,7 +120,7 @@ useEffect(() =>{
 <Segment inverted>
 <Form onSubmit={handleDelete} inverted size='large'>
 <Form.Group>
-<Form.Input font = "Helvetica Neue" name='id' required='true' value={faqUuid} label='ID' placeholder='Display name' width={2} onChange={(e) => setFaqUuid(e.target.value)} error={false} />
+<Form.Input font = "Helvetica Neue" name='id' required={true} value={faqUuid} label='ID' placeholder='Display name' width={2} onChange={(e) => setFaqUuid(e.target.value)} error={false} />
 </Form.Group>
 <br></br>
 <Button font = "Helvetica Neue" type='submit'>Delete FAQ</Button>     
@@ -134,11 +134,11 @@ useEffect(() =>{
  <Segment inverted>
 <Form onSubmit={handleUpdate} inverted size='large'>
 <Form.Group>
-<Form.Input font = "Helvetica Neue" name='uuid' required='true' value={updateFaqUuid} label='ID' placeholder='Display name' width={10} onChange={(e) => setUpdateFaqUuid(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='question' required='true' value={updateFaqQuestion} label='Question' placeholder='Display name' width={10} onChange={(e) => setUpdateFaqQuestion(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='answer'required='true' value={updateFaqAnswer} label='Answer' placeholder='Display name' width={10} onChange={(e) => setUpdateFaqAnswer(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='button' required='true' value={updateFaqButton} label='Button Title' placeholder='Display name' width={10} onChange={(e) => setUpdateFaqButton(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='link' required='true' value={updateFaqLink} label='Link'  placeholder='Display name' width={10} onChange={(e) => setUpdateFaqLink(e.target.value)} error={false} />
+<Form.Input font = "Helvetica Neue" name='uuid' required={true} value={updateFaqUuid} label='ID' placeholder='Display name' width={10} onChange={(e) => setUpdateFaqUuid(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='question' required={true} value={updateFaqQuestion} label='Question' placeholder='Display name' width={10} onChange={(e) => setUpdateFaqQuestion(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='answer'required={true} value={updateFaqAnswer} label='Answer' placeholder='Display name' width={10} onChange={(e) => setUpdateFaqAnswer(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='button' required={true} value={updateFaqButton} label='Button Title' placeholder='Display name' width={10} onChange={(e) => setUpdateFaqButton(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='link' required={true} value={updateFaqLink} label='Link'  placeholder='Display name' width={10} onChange={(e) => setUpdateFaqLink(e.target.value)} error={false} />
 </Form.Group>
 <br></br>
 <Button font = "Helvetica Neue" type='submit'>Update Councillor</Button>     
@@ -149,21 +149,21 @@ useEffect(() =>{
 <h2>View FAQ</h2>
 
 <div className="App-header">
-        {faqs.map((faq) => 
+        {faqs.map((faq, i) => 
          
-            <div className="FAQs">
+            <div className="FAQs" key={i}>
+
+
+<Card className="flex-fill mt-3" key={i}>
+            <Card.Header>{faq.uuid}</Card.Header>
+            <Card.Body> 
+            <Card.Text>{faq.question}</Card.Text>
+              <Card.Text>{faq.answer}</Card.Text>
+              <Button href={faq.link} variant="primary">{faq.button}</Button>
+            </Card.Body>
+          </Card>
               
-<Card className="" style={{width: '60rem'}}>
-      <Card.Header>ID: {faq.uuid} 
-      </Card.Header>
-      <Card.Body>
-      <Card.Text className="text-black"> Question: {faq.question} </Card.Text> 
-        <Card.Text className="text-black">Answer: {faq.answer}      
-  </Card.Text>
-        <Button href={faq.link} variant="primary">{faq.button}</Button>
-      </Card.Body>
-    </Card>
-    <br></br>
+
               </div>
              
           )}

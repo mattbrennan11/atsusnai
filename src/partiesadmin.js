@@ -9,6 +9,8 @@ import { withAuthenticator} from "@aws-amplify/ui-react";
 import NavExample from './components/Navbar'
 import AdminNav from './components/AdminNavbar'
 
+import ReactPlayer from 'react-player'
+
 import FooterExample from './components/Footer';
 import uuid from "uuid"
 import { Auth } from 'aws-amplify'; 
@@ -120,7 +122,7 @@ useEffect(() =>{
   });
   },[]);
 
- 
+ try{
   if(groups.includes('Admin')){
 
  return (
@@ -141,21 +143,21 @@ useEffect(() =>{
 <Segment inverted>
 <Form onSubmit={handleSubmit} inverted size='large'>
 <Form.Group>
- <Form.Input font = "Helvetica Neue" name='name' required='true' value={partyName} label='Name' placeholder='Display name' width={10} onChange={(e) => setPartyName(e.target.value)} error={false} />
- <Form.Input font = "Helvetica Neue" name='council'required='true' value={partyAddress} label='Address' placeholder='Display name' width={10} onChange={(e) => setPartyAddress(e.target.value)} error={false} />
- <Form.Input font = "Helvetica Neue" name='email' required='true' value={partyEmail} label='Email' placeholder='Display name' width={10} onChange={(e) => setPartyEmail(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='name' required={true} value={partyName} label='Name' placeholder='Display name' width={10} onChange={(e) => setPartyName(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='council'required={true} value={partyAddress} label='Address' placeholder='Display name' width={10} onChange={(e) => setPartyAddress(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='email' required={true} value={partyEmail} label='Email' placeholder='Display name' width={10} onChange={(e) => setPartyEmail(e.target.value)} error={false} />
  </Form.Group>
  <Form.Group>
- <Form.Input font = "Helvetica Neue" name='gmap' required='true' value={partyGmap} label='Gmap' placeholder='Display name' width={10} onChange={(e) => setPartyGmap(e.target.value)} error={false} />
- <Form.Input font = "Helvetica Neue" name='number' required='true' value={partyNumber} label='Phone Number' placeholder='Display name' width={10} onChange={(e) => setPartyNumber(e.target.value)} error={false} />
- <Form.Input font = "Helvetica Neue" name='website' required='true' value={partyWebsite} label='Website' placeholder='Display name' width={10} onChange={(e) => setPartyWebsite(e.target.value)} error={false} />
- <Form.Input font = "Helvetica Neue" name='img' required='true' value={partyImg} label='Website' placeholder='Display name' width={10} onChange={(e) => setPartyImg(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='gmap' required={true} value={partyGmap} label='Gmap' placeholder='Display name' width={10} onChange={(e) => setPartyGmap(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='number' required={true} value={partyNumber} label='Phone Number' placeholder='Display name' width={10} onChange={(e) => setPartyNumber(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='website' required={true} value={partyWebsite} label='Website' placeholder='Display name' width={10} onChange={(e) => setPartyWebsite(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='img' required={true} value={partyImg} label='Website' placeholder='Display name' width={10} onChange={(e) => setPartyImg(e.target.value)} error={false} />
 
 </Form.Group>
 <Form.Group>
- <Form.Input font = "Helvetica Neue" name='policy1' required='true' value={policyOne} label='Policy One'  placeholder='Display name' width={10} onChange={(e) => setPartyPolicyOne(e.target.value)} error={false} />
- <Form.Input font = "Helvetica Neue" name='policy2' required='true' value={policyTwo} label='Policy Two' placeholder='Display name' width={10} onChange={(e) => setPartyPolicyTwo(e.target.value)} error={false} />
- <Form.Input font = "Helvetica Neue" name='policy3' required='true' value={policyThree} label='Policy Three' placeholder='Display name' width={10} onChange={(e) => setPartyPolicyThree(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='policy1' required={true} value={policyOne} label='Policy One'  placeholder='Display name' width={10} onChange={(e) => setPartyPolicyOne(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='policy2' required={true} value={policyTwo} label='Policy Two' placeholder='Display name' width={10} onChange={(e) => setPartyPolicyTwo(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='policy3' required={true} value={policyThree} label='Policy Three' placeholder='Display name' width={10} onChange={(e) => setPartyPolicyThree(e.target.value)} error={false} />
  </Form.Group>
 <br></br>
 <Button font = "Helvetica Neue" type='submit'>Create Councillor</Button>     
@@ -168,7 +170,7 @@ useEffect(() =>{
 <Segment inverted>
 <Form onSubmit={handleDelete} inverted size='large'>
 <Form.Group>
-<Form.Input font = "Helvetica Neue" name='nickname' required='true' value={partyUuid} label='ID' placeholder='Display name' width={4} onChange={(e) => setPartyUuid(e.target.value)} error={false} />
+<Form.Input font = "Helvetica Neue" name='nickname' required={true} value={partyUuid} label='ID' placeholder='Display name' width={4} onChange={(e) => setPartyUuid(e.target.value)} error={false} />
 </Form.Group>
 <br></br>
 <Button font = "Helvetica Neue" type='submit'>Delete Councillor</Button>     
@@ -181,22 +183,22 @@ useEffect(() =>{
 <Segment inverted>
 <Form onSubmit={handleUpdate} inverted size='large'>
 <Form.Group>
-<Form.Input font = "Helvetica Neue" name='id' required='true' value={updatePartyUuid} label='ID' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyUuid(e.target.value)} error={false} />
-<Form.Input font = "Helvetica Neue" name='name' required='true' value={updatePartyName} label='Name' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyName(e.target.value)} error={false} />
- <Form.Input font = "Helvetica Neue" name='council'required='true' value={updatePartyAddress} label='Address' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyAddress(e.target.value)} error={false} />
- <Form.Input font = "Helvetica Neue" name='email' required='true' value={updatePartyEmail} label='Email' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyEmail(e.target.value)} error={false} />
+<Form.Input font = "Helvetica Neue" name='id' required={true} value={updatePartyUuid} label='ID' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyUuid(e.target.value)} error={false} />
+<Form.Input font = "Helvetica Neue" name='name' required={true} value={updatePartyName} label='Name' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyName(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='council'required={true} value={updatePartyAddress} label='Address' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyAddress(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='email' required={true} value={updatePartyEmail} label='Email' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyEmail(e.target.value)} error={false} />
 </Form.Group>
 <Form.Group>
- <Form.Input font = "Helvetica Neue" name='gmap' required='true' value={updatePartyGmap} label='Gmap' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyGmap(e.target.value)} error={false} />
- <Form.Input font = "Helvetica Neue" name='number' required='true' value={updatePartyNumber} label='Phone Number' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyNumber(e.target.value)} error={false} />
- <Form.Input font = "Helvetica Neue" name='website' required='true' value={updatePartyWebsite} label='Website' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyWebsite(e.target.value)} error={false} />
- <Form.Input font = "Helvetica Neue" name='img' required='true' value={updatePartyImg} label='Website' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyImg(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='gmap' required={true} value={updatePartyGmap} label='Gmap' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyGmap(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='number' required={true} value={updatePartyNumber} label='Phone Number' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyNumber(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='website' required={true} value={updatePartyWebsite} label='Website' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyWebsite(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='img' required={true} value={updatePartyImg} label='Website' placeholder='Display name' width={10} onChange={(e) => setUpdatePartyImg(e.target.value)} error={false} />
 
 </Form.Group>
 <Form.Group>
- <Form.Input font = "Helvetica Neue" name='policy1' required='true' value={updatePolicyOne} label='Policy One'  placeholder='Display name' width={10} onChange={(e) => setUpdatePolicyOne(e.target.value)} error={false} />
- <Form.Input font = "Helvetica Neue" name='policy2' required='true' value={updatePolicyTwo} label='Policy Two' placeholder='Display name' width={10} onChange={(e) => setUpdatePolicyTwo(e.target.value)} error={false} />
- <Form.Input font = "Helvetica Neue" name='policy3' required='true' value={updatePolicyThree} label='Policy Three' placeholder='Display name' width={10} onChange={(e) => setUpdatePolicyThree(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='policy1' required={true} value={updatePolicyOne} label='Policy One'  placeholder='Display name' width={10} onChange={(e) => setUpdatePolicyOne(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='policy2' required={true} value={updatePolicyTwo} label='Policy Two' placeholder='Display name' width={10} onChange={(e) => setUpdatePolicyTwo(e.target.value)} error={false} />
+ <Form.Input font = "Helvetica Neue" name='policy3' required={true} value={updatePolicyThree} label='Policy Three' placeholder='Display name' width={10} onChange={(e) => setUpdatePolicyThree(e.target.value)} error={false} />
 
 
 </Form.Group>
@@ -209,16 +211,16 @@ useEffect(() =>{
      <div className="App-header">
        <Row lg={3} md={2}>
   {
-        parties.map((party) => {
+        parties.map((party, i) => {
          
       return (
-        <Col className="d-flex">
+        <Col className="d-flex" key={i}>
           <Card className="flex-fill mt-3" style={{width: '60rem'}}>
-          <Card.Img variant="top" width="60px" height="280px" src={party.img} />
-          <Card.Header>ID: {party.uuid}
+          <Card.Img key={party.img} variant="top" width="60px" height="280px" src={party.img} />
+          <Card.Header key={party.uuid}>ID: {party.uuid}
             </Card.Header>
             <Card.Body>
-            <Card.Header>{party.name}
+            <Card.Header key={party.name}>{party.name}
             
             </Card.Header>
             <br></br>
@@ -226,45 +228,46 @@ useEffect(() =>{
               Key Policies
               </Card.Header>
               <br></br>
-              <Card.Text>
+              <Card.Text key={party.policyone}>
                1. {party.policyone}
                 </Card.Text>
-                <Card.Text>
+                <Card.Text key={party.policytwo}>
                 2. {party.policytwo}
                 </Card.Text>
-                <Card.Text>
+                <Card.Text key={party.policythree}>
                 3. {party.policythree}
                 </Card.Text>
                   <Card.Header>
               Contact
               </Card.Header>
               <br></br>
-              <Card.Text>
+              <Card.Text key={party.email}>
                Email: {party.email}
                 </Card.Text>
-                <Card.Text>
+                <Card.Text key={party.phone_number}>
                 Telephone: {party.phone_number}
                 </Card.Text>
-                <Card.Text>
+                <Card.Text key={party.address}>
                 Address: {party.address}
                 </Card.Text>
                  
-           
-  <div class="container-fluid map-col">
-  <div class="col-md-12 col-sm-12 map-col">
-    <div class="google-maps">
-      <div class="map-wrap">
-        <iframe width="100%" height="200" src={party.gmap} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
+                <div className="container-fluid map-col">
+<div className="col-md-12 col-sm-12 map-col">
+  <div className="google-maps">
+    <div className="map-wrap">
+      <iframe key={party.gmap} width="100%" height="200" src={party.gmap} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
     </div>
   </div>
-  
 </div>
+
+</div>
+
+
  
             </Card.Body>
             <Card.Footer>
        
-        <Button href={party.website} variant="primary">Visit Website</Button>
+        <Button key={party.website} href={party.website} variant="primary">Visit Website</Button>
      
       </Card.Footer>
             
@@ -292,6 +295,14 @@ useEffect(() =>{
     
   
 );
-}}
+}} catch{
+  console.error()
+}
+
+
+
+}
 
 export default withAuthenticator(PartiesAdmin);
+
+
