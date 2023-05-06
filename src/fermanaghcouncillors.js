@@ -77,7 +77,7 @@ useEffect(() =>{
         <Row lg={3}>    { 
     councillors.map((councillor) => {
      
-      if((councillor.Party == userInput || councillor.Party.toLowerCase() == userInput) && councillor.Council == "Fermanagh and Omagh"){
+      if((councillor.Party == userInput || councillor.Party.toLowerCase() == userInput || councillor.Party.toUpperCase() == userInput) && councillor.Council == "Fermanagh and Omagh"){
       return (
         <Col className="d-flex">
           

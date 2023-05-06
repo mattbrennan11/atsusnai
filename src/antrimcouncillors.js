@@ -83,7 +83,7 @@ function Antrim({user}) {
 
       
      
-      if((councillor.Party == userInput || councillor.Party.toLowerCase() == userInput) && councillor.Council == "Antrim and Newtownabbey"){
+      if((councillor.Party == userInput || councillor.Party.toLowerCase() == userInput || councillor.Party.toUpperCase() == userInput) && councillor.Council == "Antrim and Newtownabbey"){
       return (
         <Col className="d-flex">
           <Card className="flex-fill mt-3">

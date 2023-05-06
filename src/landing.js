@@ -9,9 +9,14 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import NavExample from './components/Navbar'
 import FooterExample from './components/Footer';
 import { withAuthenticator} from "@aws-amplify/ui-react";
+
+
+
 Amplify.configure(config);
 
-function HeroSection({user}) {
+function Landing({user}) {
+
+
   
   const [counts, setPartyCount] = React.useState([])
 
@@ -47,7 +52,7 @@ function HeroSection({user}) {
           <h1>Welcome {user.attributes.nickname} </h1>
 </div>
     <div className="Img">
-      <img src="https://www.irishcentral.com/uploads/article-v2/2023/1/155977/GettyImages-182424560__2__northern_ireland_map___getty__2_.jpg?t=1673342920" width="100%" height="500" padding-bottom="10px" />
+      <img src={require('./map.jpeg')} width="100%" height="500" padding-bottom="10px" />
     </div>
     
     <div className="Landing3">
@@ -73,8 +78,7 @@ function HeroSection({user}) {
        </div>
 
    
-   
-<div className="Video">
+       <div className="Video">
   <h2>Helpful NI Politics Videos</h2>
 <Carousel fade>
   <Carousel.Item>
@@ -90,6 +94,7 @@ function HeroSection({user}) {
   </Carousel.Item>
 </Carousel>
 </div>
+
 
 <h2>Quick Links</h2>
 <div className="Landing">
@@ -107,11 +112,9 @@ function HeroSection({user}) {
  </div>
  <br></br>
  </div>
- 
 
-   
 );
 }
 
-export default withAuthenticator(HeroSection)
+export default withAuthenticator(Landing)
 

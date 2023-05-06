@@ -10,8 +10,33 @@ import React from 'react';
 
 import {withAuthenticator} from "@aws-amplify/ui-react";
 
-const NavExample = ({signOut}) => {
-    
+const NavExample = ({signOut, user}) => {
+
+  const groups = user.signInUserSession.accessToken.payload["cognito:groups"]
+
+  try{
+    if(groups.includes('Admin')){
+    return (
+      <Navbar sticky="top" bg="dark" variant="dark" expand="lg">
+        <Container>
+          <Navbar.Brand href="/">Ats Us Nai</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+            <Nav.Link href="/profile">Profile</Nav.Link>
+              <Nav.Link href="/councillorsadmin">Councillors</Nav.Link>
+              <Nav.Link href="/partiesadmin">Political Parties</Nav.Link>
+              <Nav.Link href="/faqadmin">FAQ</Nav.Link>
+
+            </Nav>
+            <Button variant="primary" size="sm" onClick={signOut}>Sign Out</Button>
+            </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    );}} catch {
+      console.error()
+    }
+
     return (
       <Navbar sticky="top" bg="dark" variant="dark" expand="lg">
         <Container>
@@ -36,12 +61,15 @@ const NavExample = ({signOut}) => {
             </NavDropdown>
               <Nav.Link href="/parties">Political Parties</Nav.Link>
               <Nav.Link href="/faq">FAQ</Nav.Link>
+              <Nav.Link href="/councillorsadmin">Admin</Nav.Link>
             </Nav>
             <Button variant="primary" size="sm" onClick={signOut}>Sign Out</Button>
             </Navbar.Collapse>
         </Container>
       </Navbar>
     );
-  }
+
+    
+}
 
 export default withAuthenticator(NavExample); 

@@ -15,31 +15,6 @@
     }
   },
   "api": {
-    "partycountapi": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "partycountlambda",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ],
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/api/partycountapi-cloudformation-template.json",
-        "logicalId": "apipartycountapi"
-      },
-      "lastPushTimeStamp": "2023-05-02T18:27:02.090Z",
-      "output": {
-        "ApiName": "partycountapi",
-        "RootUrl": "https://0rxrw7mny9.execute-api.us-east-1.amazonaws.com/staging",
-        "ApiId": "0rxrw7mny9"
-      },
-      "lastPushDirHash": "4rE8pzeMgX9N69dHg/hGl8i8sjs="
-    },
     "partyapi": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
@@ -72,7 +47,7 @@
         "RootUrl": "https://k2oueyp3s2.execute-api.us-east-1.amazonaws.com/staging",
         "ApiId": "k2oueyp3s2"
       },
-      "lastPushTimeStamp": "2023-05-02T18:27:02.095Z",
+      "lastPushTimeStamp": "2023-05-05T10:14:05.957Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/api/partyapi-cloudformation-template.json",
         "logicalId": "apipartyapi"
@@ -315,46 +290,6 @@
         "s3Key": "amplify-builds/atsusnaic25acefcc25acefcPostConfirmation-544e4970584435492f58-build.zip"
       }
     },
-    "partycountlambda": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "partycount",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ],
-      "lastBuildTimeStamp": "2023-03-27T11:27:19.651Z",
-      "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2023-03-27T11:27:21.047Z",
-      "distZipFilename": "partycountlambda-69314a2b2b3644476b6e-build.zip",
-      "s3Bucket": {
-        "deploymentBucketName": "amplify-amplifya98d092bf2634-staging-182351-deployment",
-        "s3Key": "amplify-builds/partycountlambda-69314a2b2b3644476b6e-build.zip"
-      },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/function/partycountlambda-cloudformation-template.json",
-        "logicalId": "functionpartycountlambda"
-      },
-      "lastPushTimeStamp": "2023-05-02T18:27:02.133Z",
-      "output": {
-        "LambdaExecutionRoleArn": "arn:aws:iam::926877037256:role/atsusnaiLambdaRoleaaf93287-staging",
-        "Region": "us-east-1",
-        "Arn": "arn:aws:lambda:us-east-1:926877037256:function:partycountlambda-staging",
-        "Name": "partycountlambda-staging",
-        "LambdaExecutionRole": "atsusnaiLambdaRoleaaf93287-staging"
-      },
-      "lastPushDirHash": "iKeIHJPp4icwkWLMvyaOZsG7P7k="
-    },
     "partylambda": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -527,24 +462,6 @@
         "Region": "us-east-1"
       },
       "lastPushTimeStamp": "2023-03-01T19:59:28.541Z"
-    },
-    "partycount": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya98d092bf2634-staging-182351-deployment/amplify-cfn-templates/storage/partycount-cloudformation-template.json",
-        "logicalId": "storagepartycount"
-      },
-      "lastPushTimeStamp": "2023-05-02T18:27:02.151Z",
-      "output": {
-        "PartitionKeyName": "uuid",
-        "Region": "us-east-1",
-        "Arn": "arn:aws:dynamodb:us-east-1:926877037256:table/partycount-staging",
-        "StreamArn": "arn:aws:dynamodb:us-east-1:926877037256:table/partycount-staging/stream/2023-03-27T11:27:49.350",
-        "PartitionKeyType": "N",
-        "Name": "partycount-staging"
-      },
-      "lastPushDirHash": "WXIc+jlwwq4xEwAGpImkQIFRcOc="
     },
     "party": {
       "service": "DynamoDB",

@@ -111,20 +111,6 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "API Gateway"
-    },
-    "partycountapi": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "partycountlambda"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
     }
   },
   "auth": {
@@ -247,25 +233,6 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "partycountlambda": {
-      "build": true,
-      "dependsOn": [
-        {
-          "attributeEnvMap": {
-            "Arn": "TABLE_ARN",
-            "Name": "TABLE_NAME"
-          },
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "storage",
-          "resourceName": "partycount"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "partylambda": {
       "build": true,
       "dependsOn": [
@@ -367,22 +334,6 @@
         }
       ]
     },
-    "AMPLIFY_function_partycountlambda_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "partycountlambda"
-        }
-      ]
-    },
-    "AMPLIFY_function_partycountlambda_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "partycountlambda"
-        }
-      ]
-    },
     "AMPLIFY_function_partylambda_deploymentBucketName": {
       "usedBy": [
         {
@@ -436,10 +387,6 @@
       "service": "DynamoDB"
     },
     "party": {
-      "providerPlugin": "awscloudformation",
-      "service": "DynamoDB"
-    },
-    "partycount": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     }

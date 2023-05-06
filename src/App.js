@@ -6,10 +6,10 @@ import Quiz from './quiz'
 import RecentComments from './discuss'
 import MyAccount from './MyAccount'
 import Parties from './parties'
-import FAQ from './faq'
+import FAQ from './faq' 
 import FAQAdmin from './faqadmin'
 import Antrim from './antrimcouncillors'
-import AntrimAdmin from './antrimcouncillorsadmin'
+import CouncillorsAdmin from './councillorsadmin'
 import PartiesAdmin from './partiesadmin'
 import ProfileAdmin from './profileadmin'
 import Belfast from './belfastcouncillors'
@@ -28,11 +28,18 @@ import { withAuthenticator, View} from "@aws-amplify/ui-react";
 import {Amplify, API, Auth} from 'aws-amplify'
 Amplify.configure(aws_exports);
 
-function App({}) {
+
+
+
+function App({user}) {
+  
+
+ 
+    
   return (
     <View className="App">
-      
-      <Router>
+       
+      <Router> 
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path='/quiz' element = {<Quiz/>}/>
@@ -51,13 +58,13 @@ function App({}) {
         <Route path='/parties' element = {<Parties/>}/>
         <Route path='/faq' element = {<FAQ/>}/>
         <Route path='/faqadmin' element = {<FAQAdmin/>}/>
-        <Route path='/antrimadmin' element = {<AntrimAdmin/>}/>
+        <Route path='/councillorsadmin' element = {<CouncillorsAdmin/>}/>
         <Route path='/partiesadmin' element = {<PartiesAdmin/>}/>
-        <Route path='/partiesadmin' element = {<ProfileAdmin/>}/>
       </Routes>
     </Router>
     </View>
-  );
+
+);
 }
 
 export default withAuthenticator(App);

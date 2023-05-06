@@ -1,5 +1,0 @@
-{
-  "tableName": "partycount",
-  "partitionKeyName": "uuid",
-  "partitionKeyType": "N"
-}
