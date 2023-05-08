@@ -52,7 +52,7 @@ useEffect(() =>{
             <div className="FAQs">
               
 
-<Card className="" style={{width: '60rem'}}>
+<Card className="flex-fill mt-3" style={{width: '60rem'}}>
 
       <Card.Header>{faq.question}</Card.Header>
       <Card.Body>

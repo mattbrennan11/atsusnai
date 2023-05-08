@@ -104,12 +104,16 @@ function Discuss({user}) {
 
 <div>
 <Segment inverted>
+<Form.Group>
 <Form  inverted>
-  <Form.Group>
-<Form.Input name="discussComment" label="Find Council" value={userInput} width={4} onChange={(e) => setUserInput(e.target.value)}/>
-</Form.Group>
+  
+    <div className="App-header2">
+      <h2>Find Council</h2>
+<Form.Input name="discussComment" value={userInput} width={4} onChange={(e) => setUserInput(e.target.value)}/>
+</div>
+
  <br></br> 
-</Form>
+</Form></Form.Group>
 </Segment>
 </div>
 

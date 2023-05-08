@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages'
@@ -11,7 +11,6 @@ import FAQAdmin from './faqadmin'
 import Antrim from './antrimcouncillors'
 import CouncillorsAdmin from './councillorsadmin'
 import PartiesAdmin from './partiesadmin'
-import ProfileAdmin from './profileadmin'
 import Belfast from './belfastcouncillors'
 import Ards from './ardscouncillors'
 import Armagh from './armaghcouncillors'
@@ -25,7 +24,7 @@ import aws_exports from './aws-exports'
 import "@aws-amplify/ui-react/styles.css";
 import { withAuthenticator, View} from "@aws-amplify/ui-react";
 
-import {Amplify, API, Auth} from 'aws-amplify'
+import {Amplify} from 'aws-amplify'
 Amplify.configure(aws_exports);
 
 

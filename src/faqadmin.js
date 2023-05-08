@@ -3,20 +3,14 @@ import './App.css';
 import {Amplify, API} from 'aws-amplify'
 import config from './aws-exports'
 import "@aws-amplify/ui-react/styles.css";
-import { Auth } from 'aws-amplify'; 
 import { withAuthenticator} from "@aws-amplify/ui-react";
 import NavExample from './components/Navbar'
-import AdminNav from './components/AdminNavbar'
-
 import 'semantic-ui-css/semantic.min.css'
 import { Form, Segment} from 'semantic-ui-react';
 import FooterExample from './components/Footer';
 import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
 import uuid from "uuid"
-import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import ListGroup from 'react-bootstrap/ListGroup';
 Amplify.configure(config);
 
 
@@ -51,19 +45,26 @@ function FAQAdmin({user}) {
         button: faqButton,
       }
     }).then(fetchedFaq => {
-      setFAQ([ ... faqs, ... fetchedFaq])
+      setFAQ([ ...faqs, ...fetchedFaq])
     })
+
+    return(
+      alert('FAQ Created'),
+      window.location.reload(false)
+    )
   }
 
   const handleDelete = e =>{
     e.preventDefault()
 
-    API.del('faqapi', `/faq/${faqUuid}`, {
-    
-    
-    }).then(fetchedFaq => {
-      setFAQ([ ... faqs, ... fetchedFaq])
-    })
+    API.del('faqapi', `/faq/uuid/${faqUuid}`)
+
+
+/** 
+    return(
+      alert('FAQ Deleted'),
+      window.location.reload(false)
+    )*/
   }
 
   const handleUpdate = e =>{
@@ -80,6 +81,11 @@ function FAQAdmin({user}) {
     }).then(fetchedFaq => {
       setFAQ([ ...faqs, ...fetchedFaq])
     })
+
+     return(
+      alert('FAQ Updated'),
+      window.location.reload(false)
+    )
   }
 
 useEffect(() =>{
@@ -87,6 +93,7 @@ useEffect(() =>{
     setFAQ([...faqs, ...faqRes]);
   });
   },[]);
+
   if(groups.includes('Admin')){
 
  return (
@@ -94,7 +101,7 @@ useEffect(() =>{
     <div className="Faq">
       <div className="Quiz2">
       
-        <AdminNav/>
+        <NavExample/>
       <div>
       <h1>FAQ</h1>
       </div>
@@ -154,8 +161,10 @@ useEffect(() =>{
             <div className="FAQs" key={i}>
 
 
-<Card className="flex-fill mt-3" key={i}>
-            <Card.Header>{faq.uuid}</Card.Header>
+<Card className="flex-fill mt-3" style={{width: '60rem'}} key={i}>
+<Card.Header>ID: {faq.uuid}</Card.Header> 
+
+            
             <Card.Body> 
             <Card.Text>{faq.question}</Card.Text>
               <Card.Text>{faq.answer}</Card.Text>

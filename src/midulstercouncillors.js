@@ -68,7 +68,10 @@ useEffect(() =>{
     <h2>Options: Sinn Fein, Democratic Unionist Party, Social Democratic and Labour Party, Alliance Party of Northern Ireland,
       Ulster Unionist Party, Progressive Unionist Party, Independent, Traditional Unionist Voices, People Before Profit, 
       Cross Community Labour Alternative, Green Party Northern Ireland, Aontu </h2>
-    <Form.Input name="userInput" label="Enter Party" value={userInput} width={4} onChange={(e) => setUserInput(e.target.value)}/>
+      <div className="App-header2">
+        <h2>Enter Party</h2>
+    <Form.Input name="userInput" value={userInput} width={4} onChange={(e) => setUserInput(e.target.value)}/>
+    </div>
     </Form>
     </Form.Group>
     </Segment>

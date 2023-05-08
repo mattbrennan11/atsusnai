@@ -78,22 +78,7 @@ function Landing({user}) {
        </div>
 
    
-       <div className="Video">
-  <h2>Helpful NI Politics Videos</h2>
-<Carousel fade>
-  <Carousel.Item>
-  <iframe className= "d-block w-100" width="800" height="500" src="https://www.youtube.com/embed/lwh0mdtBSZU" 
-  title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; 
-  encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-  </Carousel.Item>
-  <Carousel.Item>
-  <iframe className= "d-block w-100" width="800" height="500" src="https://www.youtube.com/embed/zNCdyEGSTdM" title="Welcome to Your Vote - How to Vote - Northern Ireland - Full Video" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-  </Carousel.Item>
-  <Carousel.Item>
-  <iframe className= "d-block w-100" width="800" height="500" src="https://www.youtube.com/embed/rgnNBpzFV1o" title="Welcome to Your Vote - Local Councils - Northern Ireland" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-  </Carousel.Item>
-</Carousel>
-</div>
+ 
 
 
 <h2>Quick Links</h2>
@@ -118,3 +103,19 @@ function Landing({user}) {
 
 export default withAuthenticator(Landing)
 
+/**      <div className="Video">
+  <h2>Helpful NI Politics Videos</h2>
+<Carousel fade>
+  <Carousel.Item>
+  <iframe className= "d-block w-100" width="800" height="500" src="https://www.youtube.com/embed/lwh0mdtBSZU" 
+  title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; 
+  encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+  </Carousel.Item>
+  <Carousel.Item>
+  <iframe className= "d-block w-100" width="800" height="500" src="https://www.youtube.com/embed/zNCdyEGSTdM" title="Welcome to Your Vote - How to Vote - Northern Ireland - Full Video" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+  </Carousel.Item>
+  <Carousel.Item>
+  <iframe className= "d-block w-100" width="800" height="500" src="https://www.youtube.com/embed/rgnNBpzFV1o" title="Welcome to Your Vote - Local Councils - Northern Ireland" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+  </Carousel.Item>
+</Carousel>
+</div> */

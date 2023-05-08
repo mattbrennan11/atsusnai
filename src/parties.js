@@ -112,17 +112,7 @@ useEffect(() =>{
                 </Card.Text>
                  
            
-  <div className="container-fluid map-col">
-  <div className="col-md-12 col-sm-12 map-col">
-    <div className="google-maps">
-      <div className="map-wrap">
-        <iframe width="100%" height="200" src={party.gmap} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-      </div>
-    </div>
-  </div>
   
-</div>
-
             </Card.Body>
             <Card.Footer>
        
@@ -200,4 +190,17 @@ export default withAuthenticator(Parties);
 
 
  </Col>
+
+
+ <div className="container-fluid map-col">
+  <div className="col-md-12 col-sm-12 map-col">
+    <div className="google-maps">
+      <div className="map-wrap">
+        <iframe width="100%" height="200" src={party.gmap} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
 )}*/
