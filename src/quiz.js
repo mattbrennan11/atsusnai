@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { questions } from './data/Questions.js';
-import {Amplify, API} from 'aws-amplify'
 import NavExample from './components/Navbar'
 import FooterExample from './components/Footer';
-import Card from 'react-bootstrap/Card';
-import uuid from "uuid"
 import Button from 'react-bootstrap/Button';
 import { withAuthenticator} from "@aws-amplify/ui-react";
 
@@ -116,7 +113,7 @@ const Quiz = () => {
 		</div>
 	
 			<div className="Img">
-			<img src={require('./quiz.jpeg')} width="100%" height="500" padding-bottom="10px"/>
+			<img alt="quiz" src={require('./quiz.jpeg')} width="100%" height="500" padding-bottom="10px"/>
 			</div> 
 			
 		<div className='app2' style={{backgroundImage: `url(${banner})`, backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat'}}>
@@ -124,7 +121,7 @@ const Quiz = () => {
 			<div>
 			{showParty ? (
 				 
-				<div className='score-section'>
+				<div className='results'>
 					
 					<h1>You are most aligned with:</h1>
 					<h2 className='party'>{party}: {partyTotal.toFixed(1)}% </h2>
@@ -143,15 +140,15 @@ const Quiz = () => {
 			) : (
 				<>
 				<div className='part-two'>
-					<div className='question-section'>
-						<div className='question-count'>
+					<div className='ask-questions'>
+						<div className='next-questions'>
 							<span>Question {currentQuestion + 1}/{questions.length}</span>
 						</div>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+						<div className='display-question'>{questions[currentQuestion].questionText}</div>
 					</div>
-					<div className='answer-section'>
+					<div className='answers'>
 						{questions[currentQuestion].options.map((option, i) => (
-							<button key={i} className='start-button2 button-loader' onClick={() => {answerHandler(option.sinnFein, option.dup, option.sdlp, option.alliance, option.uup);}}>{option.optionText}</button>
+							<button key={i} className='button-s2 button-loader' onClick={() => {answerHandler(option.sinnFein, option.dup, option.sdlp, option.alliance, option.uup);}}>{option.optionText}</button>
 						))}
 					</div>
 				</div> 
@@ -160,15 +157,15 @@ const Quiz = () => {
 			)} </div>
 		) : (
 		<>
-				<div className='intro-part'>
-				<div className='main-title'>Take the Quiz</div>
-					<div className='intro-text'> 
+				<div className='introduction'>
+				<div className='quiz-page'>Take the Quiz</div>
+					<div className='introduction-t'> 
 						Welcome to the Ats Us Nai Northern Ireland Political Party Quiz!
                         To find out which political party best reflects your views, you will be asked a series of questions about various issues, 
                         and you must answer as honestly as you can.
 						By the end, the quiz will tally up your scores and tell you which party you are most aligned with.
 					</div>
-					<button className='start-button button-loader'  onClick={() => setShowQuiz(true)}>Start</button>
+					<button className='button-s button-loader'  onClick={() => setShowQuiz(true)}>Start</button>
 				</div>
 		</>
 		)}

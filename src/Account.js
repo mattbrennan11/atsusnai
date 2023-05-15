@@ -1,20 +1,14 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component} from 'react';
 import { Auth } from 'aws-amplify'; 
 import NavExample from './components/Navbar'
-import {AWS} from 'aws-sdk'
 import {Amplify} from 'aws-amplify';
 import 'semantic-ui-css/semantic.min.css'
-import { Grid,  Form, Segment} from 'semantic-ui-react';
+import { Form, Segment} from 'semantic-ui-react';
 import aws_exports from './aws-exports';
-
 import {withAuthenticator} from "@aws-amplify/ui-react";
-
 import Button from 'react-bootstrap/Button';
 import FooterExample from './components/Footer';
 Amplify.configure(aws_exports);
-
-const isEmail = (email)=>
-  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
 
   const isDOB =(dob)=>
   /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/.test(dob);
@@ -25,7 +19,7 @@ const options = [
   { key: 'o', text: 'Other', value: 'other' },
 ]
  
-class MyAccount extends Component{
+class Account extends Component{
 
   //Uses the auth.deleteuser to delete user's user pool account
 
@@ -93,38 +87,24 @@ class MyAccount extends Component{
 
     handleSubmit = () => {
 
-      if(this.state.nickname.trim() == ""){
+      if(this.state.nickname.trim() === ""){
         return(
         alert("Nickname cannot be empty"))
       }
-
-
-      if(this.state.email.trim()== ""){
-        return(
-        alert("Email cannot be empty"))
-      }
-
-      if(!isEmail(this.state.email)){
-        return(
-          alert("Email not valid.")
-        )}
-
-      if(this.state.given_name.trim()== ""){
+     
+      if(this.state.given_name.trim()=== ""){
         return(
         alert("First name cannot be empty"))
       }
 
-
       //no middle name validation as some people don't have middle names
 
-
-      if(this.state.family_name.trim()== ""){
+      if(this.state.family_name.trim()=== ""){
         return(
         alert("Last name cannot be empty"))
       }
 
-
-      if(this.state.birthdate.trim()== ""){
+      if(this.state.birthdate.trim()=== ""){
         return(
         alert("DOB cannot be empty"))
       }
@@ -135,13 +115,13 @@ class MyAccount extends Component{
         )
       }
 
-      if(this.state.gender.trim()== ""){
+      if(this.state.gender.trim()=== ""){
         return(
         alert("Gender cannot be empty"))
       }
 
 
-      if(this.state.phone_number.trim()== ""){
+      if(this.state.phone_number.trim()=== ""){
         return(
         alert("Mobile number cannot be empty"))
       }
@@ -151,15 +131,14 @@ class MyAccount extends Component{
         alert('Phone number not valid.')
         )
       }
-
+      
       if(!this.state.phone_number.startsWith('+')){
         return(
         alert('Phone number must include the international dialing tone starting with "+44" for UK numbers')
         )
       }
 
-
-      if(this.state.address.trim()== ""){
+      if(this.state.address.trim()=== ""){
         return(
         alert("Address cannot be empty"))
       }
@@ -183,8 +162,7 @@ class MyAccount extends Component{
        
     render(){
         
-        let loading = true;
-        if(this.state.authData) { loading = false; } 
+        if(this.state.authData) {} 
         
         const {nickname,email,given_name,middle_name,family_name,birthdate,gender,phone_number,address} = this.state;
         
@@ -237,4 +215,4 @@ class MyAccount extends Component{
 );
 }}
 
-export default withAuthenticator(MyAccount);
+export default withAuthenticator(Account);

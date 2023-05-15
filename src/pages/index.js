@@ -10,7 +10,6 @@ const Home = () => {
         setIsOpen(!isOpen)
     };
 
-
   return (
     <>
      <NavExample toggle={toggle} />
@@ -19,8 +18,6 @@ const Home = () => {
     </>
   );
 
-
-  
 };
 
 export default Home;

@@ -12,12 +12,12 @@ code {
     monospace;
 }
 
-.main-title {
+.quiz-page {
   font-family: 'Helvetica Neue';
   font-size: 4.5vw;  
   position: sticky;
   color: white;
-  top: 15%;
+  top: 15%; 
   right: 37.5%;
   align-self: center;
   justify-content: center;
@@ -63,7 +63,6 @@ code {
   }
 }
 
-
 .app2 {
   z-index: 1;
   background-color: rgb(37, 106, 226);
@@ -75,7 +74,7 @@ code {
   animation: fadein 2s;
 }
 
-.score-section {
+.results {
   display: flex;
   flex-direction: column;
   position: sticky;
@@ -88,11 +87,6 @@ code {
   animation: fadein 2s;
 }
 
-@keyframes glow {
-  to {
-      text-shadow: 5px 5px 40px rgb(0, 106, 136);
-  }
-}
 
 .part-two {
   animation: fadein 2s;
@@ -100,27 +94,26 @@ code {
   margin-right: 5vw;
 }
 
-/* QUESTION/TIMER/LEFT SECTION */
-.question-section {
+.ask-questions {
   width: 100%;
   position: relative;
   animation: fadein 2s;
 }
 
-.question-count {
+.next-questions {
   margin-bottom: 20px;
   font-family: 'Helvetica Neue';
   animation: fadein 0.5s;
 }
 
-.question-count span {
+.next-questions span {
   font-size: 2.5vw;
   font-family: 'Helvetica Neue';
   animation: fadein 0.5s;
   color: white;
 }
 
-.question-text {
+.display-question {
   margin-bottom: 1.8vh;
   line-height: 1.6;
   color: white;
@@ -129,18 +122,7 @@ code {
  
 }
 
-.timer-text {
-  background: rgb(230, 153, 12);
-  padding: 15px;
-  margin-top: 20px;
-  margin-right: 20px;
-  border: 5px solid rgb(255, 189, 67);
-  border-radius: 15px;
-  text-align: center;
-}
-
-/* ANSWERS/RIGHT SECTION */
-.answer-section {
+.answers {
   width: 100%;
   display: flex;
   font-size: 2.5vw;
@@ -149,14 +131,14 @@ code {
   animation: fadein 2s;
 }
 
-.intro-part {
+.introduction {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items:flex-start;
 }
 
-.intro-text {
+.introduction-t {
   align-self: center;
   margin-bottom: 0px;
   color: white;
@@ -169,21 +151,8 @@ code {
   margin-bottom: 5%;
   line-height: 140%;
 }
-.intro-exp {
-  align-self: center;
-  margin-bottom: 0px;
-  justify-content: center;
-  text-align: justify;
-  text-align-last: center;
-  font-size: calc(0.7vw + 4px);
-  font-style:italic;
-  font-weight: 100;
-  color: #f5f382;
-  margin-bottom: 5%;
-  line-height: 140%;
-}
 
-.start-button {
+.button-s {
   width: 15vw;
   font-size: calc(5px + 2vw);
   font-family: 'Helvetica Neue';
@@ -201,7 +170,7 @@ code {
   transition: 0.5s;
 }
 
-.start-button2 {
+.button-s2 {
   width: 25vw;
   font-size: calc(5px + 2vw);
   font-family: 'Helvetica Neue';
@@ -219,13 +188,6 @@ code {
   transition: 0.5s;
 }
 
-.correct {
-  background-color: #2f922f;}
-
-.incorrect {
-  background-color: #ff3333;
-}
-
 button:hover {
   background-color: #88ceea;
   transition: 0.5s;
@@ -234,12 +196,6 @@ button:hover {
 button:focus {
   outline: none;
 }
-
-button svg {
-  margin-right: 5px;
-}
-
-
 
 .Parties {
   background-color: black;
@@ -277,14 +233,9 @@ button svg {
   padding-left: 1.5rem;
 }
 
-
-
 .Quiz2 {
   background-color: black;
   padding-bottom: 4.5rem;
- 
-  
- 
 }
 
 .Quiz3 { 
@@ -295,45 +246,6 @@ button svg {
   padding-right:1.5rem;
   padding-left: 1.5rem;
 }
-.Councillors {
-  background-color: black;
-  padding-bottom: 1.5rem;
-  padding-top: 1.5rem;  
-}
-
-
-
-.insideParty {
-  background-color: rgb(249, 246, 246);
-  min-height: 100vh;
-  position: relative;
-  display: flex;
-  padding-bottom: 1.5rem;
-  padding-top:1.5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  flex-direction: column;
-  align-items: left;
-  justify-content: left;
-  color: black;
-  text-align: left;
-}
-
-.insideLanding {
-  background-color: black;
-  min-height: 100vh;
-  position: relative;
-  display: flex;
-  padding-bottom: 1.5rem;
-  padding-top:1.5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  flex-direction: column;
-  align-items: left;
-  justify-content: left;
-  color: black;
-  text-align: left;
-}
 
 h1{
   font : "Helvetica Neue";
@@ -342,28 +254,11 @@ h1{
   background-color: purple;
   margin:0;
   text-align: center;
-  
 } 
 
 .Landing {
   background-color: black;
   min-height: 20vh;
-  position: relative;
-  display: flex;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: black;
-}
-
-.Landing2 {
-  background-color: black;
-  min-height: 25vh;
   position: relative;
   display: flex;
   padding-top: .5rem;
@@ -389,32 +284,6 @@ h1{
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
-}
-
-.Landing4 {
-  background-color: black;
-  min-height: 25vh;
-  position: center;
- 
-
- 
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: black;
-}
-
-h0{
-  font : "Helvetica Neue";
-  color: white;
-  font-size: calc(0.7vw + 24px);
-  text-align: center;
-  padding-bottom: 1.5rem;
-}
-
-
-img{
-  float:right;
 }
 
 Img{
@@ -444,7 +313,6 @@ h2{
   background-color: rgb(37, 106, 226);
   font-size: calc(0.7vw + 24px);
   text-align: center;
- 
 }
 
 h6{
@@ -453,25 +321,6 @@ h6{
   background-color: black;
   font-size: calc(0.7vw + 24px);
   text-align: center;
-  
-}
-
-
-
-h5{
-  font : "Helvetica Neue";
-  color: black;
-  font-size: calc(0.7vw + 14px);
-  text-align: left;
-  padding-bottom: 1.5rem;
-}
-
-h4{
-  font : "Helvetica Neue";
-  color: white;
-  font-size: calc(4.7vw + 24px);
-  text-align: center;
-  padding-bottom: 1.5rem;
 }
 
 .footer--pin {
@@ -481,27 +330,4 @@ h4{
   bottom: 0;
 }
 
-#myVideo {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  background: #232a34;
-}
 
-/* Style the button used to pause/play the video */
-#myBtn {
-  width: 200px;
-  font-size: 18px;
-  padding: 10px;
-  border: none;
-  background: #000;
-  color: #fff;
-  cursor: pointer;
-}
-
-#myBtn:hover {
-  background: #ddd;
-  color: black;
-}

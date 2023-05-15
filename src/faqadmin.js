@@ -13,22 +13,17 @@ import uuid from "uuid"
 import Button from 'react-bootstrap/Button';
 Amplify.configure(config);
 
-
 function FAQAdmin({user}) {
 
-  const [faqUuid, setFaqUuid] = React.useState('')
   const [faqQuestion, setFaqQuestion] = React.useState('')
   const [faqAnswer, setFaqAnswer] = React.useState('')
   const [faqLink, setFaqLink] = React.useState('')
   const [faqButton, setFaqButton] = React.useState('')
-
-
   const [updateFaqUuid, setUpdateFaqUuid] = React.useState('')
   const [updateFaqQuestion, setUpdateFaqQuestion] = React.useState('')
   const [updateFaqAnswer, setUpdateFaqAnswer] = React.useState('')
   const [updateFaqLink, setUpdateFaqLink] = React.useState('')
   const [updateFaqButton, setUpdateFaqButton] = React.useState('')
-
   const [faqs, setFAQ] = React.useState([])
 
   const groups = user.signInUserSession.accessToken.payload["cognito:groups"]
@@ -36,6 +31,7 @@ function FAQAdmin({user}) {
   const handleSubmit = e =>{
     e.preventDefault()
 
+    try{
     API.post('faqapi', '/faq', {
       body: {
         uuid: uuid.v1(),
@@ -44,47 +40,43 @@ function FAQAdmin({user}) {
         link: faqLink,
         button: faqButton,
       }
-    }).then(fetchedFaq => {
-      setFAQ([ ...faqs, ...fetchedFaq])
     })
 
-    return(
-      alert('FAQ Created'),
-      window.location.reload(false)
-    )
+  } catch{
+    console.log('')
   }
 
+    return(
+      alert('FAQ Created') 
+    )
+    
+  }
+/** 
   const handleDelete = e =>{
     e.preventDefault()
 
     API.del('faqapi', `/faq/uuid/${faqUuid}`)
-
-
-/** 
     return(
       alert('FAQ Deleted'),
       window.location.reload(false)
-    )*/
-  }
+    )
+  }*/
 
   const handleUpdate = e =>{
     e.preventDefault()
 
     API.put('faqapi', '/faq', {
       body: {
-        uuid: faqUuid,
-        question: faqQuestion,
-        answer: faqAnswer,
-        link: faqLink,
-        button: faqButton,
+        uuid: updateFaqUuid,
+        question: updateFaqQuestion,
+        answer: updateFaqAnswer,
+        link: updateFaqLink,
+        button: updateFaqButton,
       }
-    }).then(fetchedFaq => {
-      setFAQ([ ...faqs, ...fetchedFaq])
     })
 
-     return(
-      alert('FAQ Updated'),
-      window.location.reload(false)
+    return(
+      alert('FAQ Updated')
     )
   }
 
@@ -94,6 +86,7 @@ useEffect(() =>{
   });
   },[]);
 
+  try{
   if(groups.includes('Admin')){
 
  return (
@@ -112,46 +105,37 @@ useEffect(() =>{
      <Segment inverted>
  <Form onSubmit={handleSubmit} inverted size='large'>
      <Form.Group>
-       <Form.Input font = "Helvetica Neue" name='question' required={true} value={faqQuestion} label='Question' placeholder='Display name' width={10} onChange={(e) => setFaqQuestion(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='answer'required={true} value={faqAnswer} label='Answer' placeholder='Display name' width={10} onChange={(e) => setFaqAnswer(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='button' required={true} value={faqButton} label='Button Title' placeholder='Display name' width={10} onChange={(e) => setFaqButton(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='link' required={true} value={faqLink} label='Link'  placeholder='Display name' width={10} onChange={(e) => setFaqLink(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='question' required={true} value={faqQuestion} label='Question' placeholder='How do I apply for an electoral card?' width={10} onChange={(e) => setFaqQuestion(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='answer'required={true} value={faqAnswer} label='Answer' placeholder='By clicking the button below' width={10} onChange={(e) => setFaqAnswer(e.target.value)} error={false} />
+       </Form.Group>
+       <Form.Group>
+       <Form.Input font = "Helvetica Neue" name='button' required={true} value={faqButton} label='Button Title' placeholder='Order Card' width={10} onChange={(e) => setFaqButton(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='link' required={true} value={faqLink} label='Link'  placeholder='order.com' width={10} onChange={(e) => setFaqLink(e.target.value)} error={false} />
       </Form.Group>
      <br></br>
      <Button font = "Helvetica Neue" type='submit'>Create FAQ</Button>     
    </Form>
  </Segment>
 
- <h2>Delete FAQ</h2>
-
-<Segment inverted>
-<Form onSubmit={handleDelete} inverted size='large'>
-<Form.Group>
-<Form.Input font = "Helvetica Neue" name='id' required={true} value={faqUuid} label='ID' placeholder='Display name' width={2} onChange={(e) => setFaqUuid(e.target.value)} error={false} />
-</Form.Group>
-<br></br>
-<Button font = "Helvetica Neue" type='submit'>Delete FAQ</Button>     
-</Form>
-</Segment>
-
-
-
  <h2>Update FAQ</h2>
 
  <Segment inverted>
 <Form onSubmit={handleUpdate} inverted size='large'>
 <Form.Group>
-<Form.Input font = "Helvetica Neue" name='uuid' required={true} value={updateFaqUuid} label='ID' placeholder='Display name' width={10} onChange={(e) => setUpdateFaqUuid(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='question' required={true} value={updateFaqQuestion} label='Question' placeholder='Display name' width={10} onChange={(e) => setUpdateFaqQuestion(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='answer'required={true} value={updateFaqAnswer} label='Answer' placeholder='Display name' width={10} onChange={(e) => setUpdateFaqAnswer(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='button' required={true} value={updateFaqButton} label='Button Title' placeholder='Display name' width={10} onChange={(e) => setUpdateFaqButton(e.target.value)} error={false} />
-       <Form.Input font = "Helvetica Neue" name='link' required={true} value={updateFaqLink} label='Link'  placeholder='Display name' width={10} onChange={(e) => setUpdateFaqLink(e.target.value)} error={false} />
+<Form.Input font = "Helvetica Neue" name='uuid' required={true} value={updateFaqUuid} label='ID' placeholder='580853503' width={8} onChange={(e) => setUpdateFaqUuid(e.target.value)} error={false} />
+</Form.Group>
+<Form.Group>
+       <Form.Input font = "Helvetica Neue" name='question' required={true} value={updateFaqQuestion} label='Question' placeholder='How do I order an electoral cards?' width={10} onChange={(e) => setUpdateFaqQuestion(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='answer'required={true} value={updateFaqAnswer} label='Answer' placeholder='By clicking button below' width={10} onChange={(e) => setUpdateFaqAnswer(e.target.value)} error={false} />
+       </Form.Group>
+       <Form.Group>
+       <Form.Input font = "Helvetica Neue" name='button' required={true} value={updateFaqButton} label='Button Title' placeholder='Order Card' width={10} onChange={(e) => setUpdateFaqButton(e.target.value)} error={false} />
+       <Form.Input font = "Helvetica Neue" name='link' required={true} value={updateFaqLink} label='Link'  placeholder='order.com' width={10} onChange={(e) => setUpdateFaqLink(e.target.value)} error={false} />
 </Form.Group>
 <br></br>
-<Button font = "Helvetica Neue" type='submit'>Update Councillor</Button>     
+<Button font = "Helvetica Neue" type='submit'>Update FAQ</Button>     
 </Form>
 </Segment>
-
 
 <h2>View FAQ</h2>
 
@@ -160,19 +144,14 @@ useEffect(() =>{
          
             <div className="FAQs" key={i}>
 
-
-<Card className="flex-fill mt-3" style={{width: '60rem'}} key={i}>
+<Card className="flex-fill mt-3" style={{width: '40rem'}} key={i}>
 <Card.Header>ID: {faq.uuid}</Card.Header> 
-
-            
             <Card.Body> 
             <Card.Text>{faq.question}</Card.Text>
               <Card.Text>{faq.answer}</Card.Text>
               <Button href={faq.link} variant="primary">{faq.button}</Button>
             </Card.Body>
           </Card>
-              
-
               </div>
              
           )}
@@ -181,11 +160,33 @@ useEffect(() =>{
  </div>
   </div>
 
-      
-      
-    
   );
+  }  }catch{
+    console.error("No access to non admin")
   }
+  
+  return(
+    <div>
+    <NavExample/>
+    <h2>Incorrect Path - You have no admin access</h2>
+    <h2>Use Navbar to return to accessible web pages</h2>
+    </div>
+    
+  )
 }
   export default withAuthenticator(FAQAdmin);
   
+  /** delete frontend for when further improvement done
+<h2>Delete FAQ</h2>
+
+<Segment inverted>
+<Form onSubmit={handleDelete} inverted size='large'>
+<Form.Group>
+<Form.Input font = "Helvetica Neue" name='id' required={true} value={faqUuid} label='ID' placeholder='4839483' width={4} onChange={(e) => setFaqUuid(e.target.value)} error={false} />
+</Form.Group>
+<br></br>
+<Button font = "Helvetica Neue" type='submit'>Delete FAQ</Button>     
+</Form>
+</Segment>
+
+   */

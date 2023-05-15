@@ -27,7 +27,6 @@ function CouncillorsAdmin({user}) {
   const [councillorCouncil, setCouncillorCouncil] = React.useState('')
   const [councillorName, setCouncillorName] = React.useState('')
   const [councillorParty, setCouncillorParty] = React.useState('')
-  const [councillorUuid, setCouncillorUuid] = React.useState('')
   const [councillors, setCouncillors] = React.useState([])
 
 //councillors - update
@@ -41,6 +40,7 @@ function CouncillorsAdmin({user}) {
 
     //setting user input to search by party
     const [userInput, setUserInput] = React.useState('')
+    const [councilInput, setCouncilInput] = React.useState('')
 
   const groups = user.signInUserSession.accessToken.payload["cognito:groups"]
 
@@ -80,7 +80,7 @@ function CouncillorsAdmin({user}) {
 
           if(!isEmail(councillorEmail)){
             return(
-              alert("Email not valid.")
+              alert("Email not valid. Must be in the form *****@gmail.com")
             )
           }
 
@@ -121,24 +121,85 @@ function CouncillorsAdmin({user}) {
         Telephone: councillorNumber,
         Website: councillorWebsite,
       }
-    }).then(fetchedCouncillor => {
-      setCouncillors([ ...councillors, ...fetchedCouncillor])
-    }
-    
-   
-    ) ;
+    })
     
     return(
-      alert('Councillor Created'),
-      window.location.reload(false)
+      alert('Councillor Created')
     )
     }
 
   const handleUpdate = e =>{
     e.preventDefault()
 
-    
-//need logic for if it exists
+    if(updateCouncillorUuid.trim() ===""){
+      return(
+        alert("Uuid cannot be empty")
+      )
+    }
+
+    //Councillor Name Error Logic
+    if(updateCouncillorName.trim() === ""){
+      return(
+        alert("Name cannot be empty.")
+      )
+      }
+
+ //Councillor Council Error Logic
+      if(updateCouncillorCouncil.trim() === ""){
+        return(
+          alert("Council cannot be empty.")
+        )
+        }
+
+        if(updateCouncillorCouncil !== "Antrim and Newtownabbey" && updateCouncillorCouncil !== "Ards and North Down"
+        && updateCouncillorCouncil !== "Armagh City Banbridge and Craigavon" && updateCouncillorCouncil !== "Belfast"
+        && updateCouncillorCouncil !== "Causeway Coast and Glens" && updateCouncillorCouncil !== "Fermanagh and Omagh"
+        && updateCouncillorCouncil !== "Lisburn and Castlereagh" && updateCouncillorCouncil !== "Mid and East Antrim"
+        && updateCouncillorCouncil !== "Newry Mourne and Down" && updateCouncillorCouncil !== "Mid Ulster"){
+          return(
+            alert("Council not valid. Must be in one of the following forms: \nAntrim and Newtownabbey\nArds and North Down\nArmagh City Banbirdge and Craigavon\nBelfast\nCauseway Coast and Glens\nFermanagh and Omagh\nLisburn and Castlereagh\nMid and East Antrim\nNewry Mourne and Down\nMid Ulster")
+          )
+        }
+
+ //Councillor Email Error Logic
+        if(updateCouncillorEmail.trim() === ""){
+          return(
+            alert("Email cannot be empty.")
+          )
+          }
+
+          if(!isEmail(updateCouncillorEmail)){
+            return(
+              alert("Email not valid. Must be in the form *****@gmail.com")
+            )
+          }
+
+ //Councillor Party Error Logic
+          if(updateCouncillorParty.trim() === ""){
+            return(
+              alert("Party cannot be empty.")
+            )
+            }
+
+ //Councillor Number Error Logic
+            if(updateCouncillorNumber.trim() === ""){
+              return(
+                alert("Phone number cannot be empty.")
+              )
+              }
+
+              if(!updateCouncillorNumber.match('[0-9]{11}')){
+                return(
+                alert('Phone number not valid.')
+                )
+              }
+
+ //Councillor Website Error Logic
+              if(updateCouncillorWebsite.trim() === ""){
+                return(
+                  alert("Website cannot be empty.")
+                )
+                }
 
     API.put('councillorsapi', '/councillors', {
       body: {
@@ -150,20 +211,17 @@ function CouncillorsAdmin({user}) {
         Telephone: updateCouncillorNumber,
         Website: updateCouncillorWebsite,
       }
-    }).then(fetchedCouncillor => {
-      setCouncillors([ ...councillors, ...fetchedCouncillor])
     })
 
     return(
-      alert('Councillor Updated'),
-      window.location.reload(false)
+      alert('Councillor Updated')
+      
     )
   }
 
- 
+ /** delete function for further improvement
   const handleDelete = e =>{
     e.preventDefault()
-
 
     API.del('councillorsapi', `/councillors/${councillorUuid}}`,  {
      Key:{
@@ -178,12 +236,12 @@ function CouncillorsAdmin({user}) {
       window.location.reload(false)
     )
   }
-
+*/
 useEffect(() =>{
   API.get('councillorsapi', '/councillors/uuid').then((councillorRes) =>{
     setCouncillors([...councillors, ...councillorRes]);
   });
-  },);
+  },[]);
  
   try{
   if(groups.includes('Admin')){
@@ -213,30 +271,10 @@ useEffect(() =>{
    </Form>
  </Segment>
 
- <h2>Delete Councillor</h2>
-
-
-<Segment inverted>
-<Form onSubmit={handleDelete} inverted size='large'>
-
-<Form.Group>
- 
-<Form.Input font = "Helvetica Neue" name='uuid' required={true} value={councillorUuid} label='ID' placeholder='85285032808' width={2} onChange={(e) => setCouncillorUuid(e.target.value)}/>
-
-</Form.Group>
-<br></br>
-<Button font = "Helvetica Neue" type='submit'>Delete Councillor</Button>     
-</Form>
-</Segment>
-
 <h2>Update Councillor</h2>
-
-
 <Segment inverted>
 <Form onSubmit={handleUpdate} inverted size='large'>
 <Form.Group>
-
-     
       <Form.Input font = "Helvetica Neue" name='uuid' required={true} value={updateCouncillorUuid} label='ID' placeholder='858025830' width={10} onChange={(e) =>  setUpdateCouncillorUuid(e.target.value)} />
       <Form.Input font = "Helvetica Neue" name='name' required={true} value={updateCouncillorName} label='Name' placeholder='Matthew Brennan' width={10} onChange={(e) =>  setUpdateCouncillorName(e.target.value)} />
        <Form.Input font = "Helvetica Neue" name='council' required={true} value={updateCouncillorCouncil} label='Council' placeholder='Belfast' width={10} onChange={(e) => setUpdateCouncillorCouncil(e.target.value)}/>
@@ -244,31 +282,30 @@ useEffect(() =>{
        <Form.Input font = "Helvetica Neue" name='party' required={true} value={updateCouncillorParty} label='Party'  placeholder='Sinn Fein' width={10} onChange={(e) => setUpdateCouncillorParty(e.target.value)} />
        <Form.Input font = "Helvetica Neue" name='number' required={true} value={updateCouncillorNumber} label='Phone Number' placeholder='07549870334' width={10} onChange={(e) => setUpdateCouncillorNumber(e.target.value)} />
        <Form.Input font = "Helvetica Neue" name='website' required={true} value={updateCouncillorWebsite} label='Website' placeholder='mattb.com' width={10} onChange={(e) => setUpdateCouncillorWebsite(e.target.value)} />
-     
-
 </Form.Group>
 <br></br>
 <Button font = "Helvetica Neue" type='submit'>Update Councillor</Button>     
 </Form>
 </Segment>
- 
-</div>
 
-       
+  <div>
 
-      <div><div>
+  <h2>Enter a political party in the search bar below to find councillors</h2>
 
 <div>
 <Segment inverted>
   <Form.Group>
   <Form inverted>
-    <h2>Enter a political party in the search bar below to find councillors</h2>
     <h2>Options: Sinn Fein, Democratic Unionist Party, Social Democratic and Labour Party, Alliance Party of Northern Ireland,
       Ulster Unionist Party, Progressive Unionist Party, Independent, Traditional Unionist Voices, People Before Profit, 
       Cross Community Labour Alternative, Green Party Northern Ireland, Aontu </h2>
       <div className="App-header2">
         <h2>Enter Party</h2>
     <Form.Input name="userInput" value={userInput} width={4} onChange={(e) => setUserInput(e.target.value)}/>
+    </div>
+    <div className="App-header2">
+    <h2>Enter Council</h2>
+    <Form.Input name="councilInput" value={councilInput} width={4} onChange={(e) => setCouncilInput(e.target.value)}/>
     </div>
     </Form>
     </Form.Group>
@@ -278,10 +315,12 @@ useEffect(() =>{
         <Row lg={3}>    { 
     councillors.map((councillor) => {
     
-      if((councillor.Party === userInput || councillor.Party.toLowerCase() === userInput || councillor.Party.toUpperCase() === userInput)){
+      if(((councillor.Party === userInput || councillor.Party.toLowerCase() === userInput || councillor.Party.toUpperCase() === userInput)
+      && (councillor.Council === councilInput || councillor.Council.toLowerCase() === councilInput || councillor.Council.toUpperCase() === councilInput)
+      
+      )){
       return (
         <Col className="d-flex">
-          
           <Card className="flex-fill mt-3">
             <Card.Header>{councillor.Name}</Card.Header>
             <Card.Body> 
@@ -299,22 +338,36 @@ useEffect(() =>{
     })     }
 </Row></div>
 </div>
-</div>
+</div></div>
       <FooterExample />
-      </div>
-      </div>
+     </div>
+     
   );
 }  } catch{
   console.error("No access to non admin")
 }
 
 return(
-
-  <h2>You have no admin access</h2>
+  <div>
+  <NavExample/>
+  <h2>Incorrect Path - You have no admin access</h2>
+  <h2>Use Navbar to return to accessible web pages</h2>
+  </div>
   
 )
-
 }
 
 export default withAuthenticator(CouncillorsAdmin);
 
+/** delete front-end once further improvement has been made
+  <h2>Delete Councillor</h2>
+<Segment inverted>
+<Form onSubmit={handleDelete} inverted size='large'>
+<Form.Group>
+<Form.Input font = "Helvetica Neue" name='uuid' required={true} value={councillorUuid} label='ID' placeholder='85285032808' width={4} onChange={(e) => setCouncillorUuid(e.target.value)}/>
+</Form.Group>
+<br></br>
+<Button font = "Helvetica Neue" type='submit'>Delete Councillor</Button>     
+</Form>
+</Segment>
+ */
