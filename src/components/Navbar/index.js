@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import React from 'react';
+import {Auth} from 'aws-amplify'
 import { withAuthenticator} from "@aws-amplify/ui-react";
 
 const NavExample = ({ signOut, user}) => {
@@ -28,7 +29,7 @@ const NavExample = ({ signOut, user}) => {
               <Nav.Link href="/partiesadmin">Political Parties</Nav.Link>
               <Nav.Link href="/faqadmin">FAQ</Nav.Link>
             </Nav> 
-            <Button variant="primary" size="sm" onClick={signOut}>Sign Out</Button>
+            <Button variant="primary" size="sm" onClick= {signOut}>Sign Out</Button>
             </Navbar.Collapse>
         </Container>
       </Navbar>

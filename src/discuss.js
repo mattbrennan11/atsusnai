@@ -122,7 +122,7 @@ function Discuss({user}) {
 <div className="FAQs" key={i}>
  
 <Col className="d-flex" key={i}>
-          <Card className="flex-fill mt-3" style={{width: '30rem'}} key={i}>
+          <Card className="flex-fill mt-3" style={{width: '50rem'}} key={i}>
             <Card.Header>{title.nickname}</Card.Header>
             <Card.Body> 
             <Card.Text>{title.comment}</Card.Text>
@@ -145,8 +145,10 @@ function Discuss({user}) {
 <Form.Group>
 <Form onSubmit={handleSubmit} inverted size="large">
 <div className="App-header3">
-<Form.Input name="discussComment" required={true} label="Comment" value={commentInput} width={12} onChange={(e) => setCommentInput(e.target.value)}/>
-<Form.Input name="userInput" required={true} label="Council" value={councilInput} width={12} onChange={(e) => setCouncilInput(e.target.value)}/>
+<Form.Input name="discussComment" required={true} label="Comment" 
+value={commentInput} width={12} onChange={(e) => setCommentInput(e.target.value)}/>
+<Form.Input name="userInput" required={true} label="Council" 
+value={councilInput} width={12} onChange={(e) => setCouncilInput(e.target.value)}/>
  <br></br> 
  <Button variant='primary' font = "Helvetica Neue" type='submit'>Add Comment</Button>  </div>   
 </Form>
